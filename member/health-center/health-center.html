@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - Health Profile</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <style>
+        body { background-color: var(--background-secondary); }
+        .header-nav { display: flex; justify-content: space-between; align-items: center; }
+        .header-title { font-size: var(--text-lg); font-weight: var(--font-semibold); }
+        .icon-button { width: 40px; height: 40px; border-radius: var(--radius-full); background-color: var(--background-secondary); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; }
+        
+        main {
+            padding: var(--space-lg);
+            padding-bottom: 100px; /* Space for the fixed footer */
+        }
+
+        .form-section {
+            background-color: var(--background-primary);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-md);
+        }
+
+        .section-title {
+            font-size: var(--text-lg);
+            font-weight: var(--font-semibold);
+            margin-bottom: var(--space-md);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-label {
+            display: block;
+            font-size: var(--text-sm);
+            font-weight: var(--font-medium);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: var(--space-md);
+            font-size: var(--text-md);
+            background-color: var(--background-primary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-500);
+            box-shadow: 0 0 0 2px var(--primary-100);
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-group .form-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-right: none;
+        }
+
+        .input-group-text {
+            padding: var(--space-md);
+            background-color: var(--background-secondary);
+            border: 1px solid var(--border-light);
+            border-left: none;
+            border-top-right-radius: var(--radius-md);
+            border-bottom-right-radius: var(--radius-md);
+            color: var(--text-secondary);
+        }
+
+        .page-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--background-primary);
+            padding: var(--space-md) var(--space-lg);
+            border-top: 1px solid var(--border-light);
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-nav">
+                <button class="icon-button" onclick="window.history.back()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <h1 class="header-title">Health Profile</h1>
+                <div style="width: 40px;"></div>
+            </div>
+        </header>
+        <main>
+            <form id="health-form">
+                <div class="form-section">
+                    <h2 class="section-title">ข้อมูลทางกายภาพ</h2>
+                    <div class="form-group">
+                        <label for="height" class="form-label">ส่วนสูง</label>
+                        <div class="input-group"><input type="number" id="height" class="form-control" placeholder="0"><span class="input-group-text">ซม.</span></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight" class="form-label">น้ำหนัก</label>
+                        <div class="input-group"><input type="number" id="weight" class="form-control" placeholder="0"><span class="input-group-text">กก.</span></div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">เป้าหมายสุขภาพ</h2>
+                    <p class="text-secondary">ส่วนนี้ยังอยู่ระหว่างการพัฒนา</p>
+                </div>
+
+                <div class="form-section">
+                    <h2 class="section-title">ข้อจำกัดด้านอาหาร</h2>
+                    <p class="text-secondary">ส่วนนี้ยังอยู่ระหว่างการพัฒนา</p>
+                </div>
+            </form>
+        </main>
+        <footer class="page-footer">
+            <button class="btn btn-primary" style="width: 100%;">บันทึกข้อมูล</button>
+        </footer>
+    </div>
+</body>
+</html>

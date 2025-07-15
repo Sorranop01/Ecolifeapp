@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ขอใบกำกับภาษี</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="request-tax-invoice.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-nav">
+                <button class="icon-button" id="backButton">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                </button>
+                <h1 class="header-title">ขอใบกำกับภาษี</h1>
+                <div style="width: 40px;"></div>
+            </div>
+        </header>
+        <main>
+            <div class="order-info" id="orderInfo">
+                สำหรับคำสั่งซื้อ: <strong id="orderIdDisplay">#ECO...</strong>
+            </div>
+
+            <form id="tax-invoice-form">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label class="form-label">ประเภทผู้เสียภาษี</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="taxpayer-type" value="individual" checked>
+                                บุคคลธรรมดา
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="taxpayer-type" value="company">
+                                นิติบุคคล
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="company-name-group" style="display: none;">
+                        <label for="company-name" class="form-label">ชื่อบริษัท</label>
+                        <input type="text" id="company-name" class="form-control" placeholder="กรอกชื่อบริษัท">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taxpayer-name" class="form-label">ชื่อ-นามสกุล ผู้เสียภาษี</label>
+                        <input type="text" id="taxpayer-name" class="form-control" placeholder="กรอกชื่อ-นามสกุล" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tax-id" class="form-label">เลขประจำตัวผู้เสียภาษี 13 หลัก</label>
+                        <input type="text" id="tax-id" class="form-control" placeholder="กรอกเลข 13 หลัก" maxlength="13" required>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="tax-address" class="form-label">ที่อยู่สำหรับออกใบกำกับภาษี</label>
+                        <textarea id="tax-address" class="form-control" rows="4" placeholder="บ้านเลขที่, หมู่, ซอย, ถนน, แขวง/ตำบล, เขต/อำเภอ, จังหวัด, รหัสไปรษณีย์" required></textarea>
+                    </div>
+                </div>
+
+                <!-- Save Info Checkbox -->
+                <div class="form-section">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="save-info-checkbox" checked>
+                        <span>บันทึกข้อมูลนี้ไว้สำหรับใช้ครั้งต่อไป</span>
+                    </label>
+                </div>
+
+            </form>
+        </main>
+        <footer class="page-footer">
+            <button class="btn btn-primary submit-button" type="submit" form="tax-invoice-form">ส่งคำขอ</button>
+        </footer>
+    </div>
+
+    <!-- Toast Notification Element -->
+    <div id="toast-notification" class="toast"></div>
+
+    <script src="request-tax-invoice.js"></script>
+</body>
+</html>

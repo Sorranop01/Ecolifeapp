@@ -1,0 +1,151 @@
+/* contact.css - สไตล์สำหรับหน้าติดต่อเรา */
+
+.content {
+    padding-bottom: 24px;
+}
+
+.divider {
+    /* This class should ideally be in common.css */
+    height: 8px;
+    background-color: var(--light-gray);
+    border-top: 1px solid #e9ecef;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.section {
+    padding: 24px 16px;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e9ecef;
+    color: var(--dark-gray);
+}
+
+/* --- REDESIGNED CONTACT INFO --- */
+.contact-info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.contact-card, .address-card {
+    background-color: var(--primary-white);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none;
+    color: inherit;
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 12px var(--shadow-light);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 8px 24px var(--shadow-medium);
+    border-color: var(--primary-green);
+}
+
+.contact-icon {
+    font-size: 24px;
+    background-color: var(--soft-mint);
+    color: var(--primary-green);
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon {
+    transform: rotate(-10deg) scale(1.1);
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+}
+
+.contact-title {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 4px;
+    color: var(--dark-gray);
+}
+
+.contact-detail {
+    font-size: 14px;
+    color: var(--medium-gray);
+    word-break: break-word;
+}
+
+/* --- REDESIGNED CONTACT FORM --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* These form-group styles are not in common.css, but are needed by contact.html. */
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+    border-color: var(--danger);
+}
+
+.error-message {
+    color: var(--danger);
+    font-size: 12px;
+    margin-top: 4px;
+    min-height: 1em;
+}
+
+/* This button style is missing from common.css, so it's defined here */
+.primary-button {
+    background-color: var(--primary-green);
+    color: var(--primary-white);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 28px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+.primary-button:hover {
+    background-color: var(--success);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(46, 204, 113, 0.4);
+}
+.primary-button:disabled {
+    background-color: var(--medium-gray);
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* FAQ Section - Improved */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}

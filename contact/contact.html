@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ติดต่อเรา - EcoLife</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="contact.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-nav">
+                <button class="icon-btn" id="back-btn" aria-label="ย้อนกลับ">←</button>
+                <h1 class="header-title">ติดต่อเรา</h1>
+                <div style="width: 40px;"></div> <!-- Spacer -->
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- Contact Info Section -->
+            <section class="section">
+                <h2 class="section-title">ช่องทางการติดต่อ</h2>
+                <div class="contact-info-list">
+                    <a href="tel:+6621234567" class="contact-card">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <p class="contact-title">โทรศัพท์</p>
+                            <p class="contact-detail">02-123-4567</p>
+                        </div>
+                    </a>
+                    <a href="mailto:support@ecolife.co.th" class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <p class="contact-title">อีเมล</p>
+                            <p class="contact-detail">support@ecolife.co.th</p>
+                        </div>
+                    </a>
+                    <a href="https://line.me/ti/p/~@ecolifeth" target="_blank" class="contact-card">
+                        <div class="contact-icon">💬</div>
+                        <div class="contact-text">
+                            <p class="contact-title">LINE Official</p>
+                            <p class="contact-detail">@ecolifeth</p>
+                        </div>
+                    </a>
+                    <a href="https://www.facebook.com/ecolife" target="_blank" class="contact-card">
+                        <div class="contact-icon">👍</div>
+                        <div class="contact-text">
+                            <p class="contact-title">Facebook</p>
+                            <p class="contact-detail">EcoLife Thailand</p>
+                        </div>
+                    </a>
+                    <a href="#" class="contact-card address-card">
+                        <div class="contact-icon">🏢</div>
+                        <div class="contact-text">
+                            <p class="contact-title">ที่อยู่สำนักงานใหญ่</p>
+                            <p class="contact-detail">123 ถนนสุขุมวิท, แขวงคลองเตย, เขตคลองเตย, กรุงเทพมหานคร 10110</p>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- Contact Form Section -->
+            <section class="section">
+                <h2 class="section-title">ส่งข้อความถึงเรา</h2>
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">ชื่อ-นามสกุล</label>
+                        <input type="text" id="name" name="name" placeholder="กรอกชื่อ-นามสกุลของคุณ" required>
+                        <p class="error-message" aria-live="polite"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">อีเมล</label>
+                        <input type="email" id="email" name="email" placeholder="กรอกอีเมลสำหรับติดต่อกลับ" required>
+                        <p class="error-message" aria-live="polite"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">หัวข้อเรื่อง</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>-- เลือกหัวข้อ --</option>
+                            <option value="general">สอบถามข้อมูลทั่วไป</option>
+                            <option value="order">ปัญหาการสั่งซื้อ</option>
+                            <option value="tracking">ติดตามสถานะสินค้า</option>
+                            <option value="feedback">ข้อเสนอแนะ/ติชม</option>
+                            <option value="other">อื่นๆ</option>
+                        </select>
+                        <p class="error-message" aria-live="polite"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">ข้อความ</label>
+                        <textarea id="message" name="message" rows="5" placeholder="พิมพ์ข้อความของคุณที่นี่..." required></textarea>
+                        <p class="error-message" aria-live="polite"></p>
+                    </div>
+                    <button type="submit" class="primary-button" id="submit-btn">ส่งข้อความ</button>
+                </form>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- FAQ Section -->
+            <section class="section">
+                <h2 class="section-title">คำถามที่พบบ่อย</h2>
+                <div class="faq-list" id="faq-list">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>ใช้เวลากี่วันในการจัดส่ง?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>โดยปกติในกรุงเทพฯ และปริมณฑลใช้เวลา 1-2 วันทำการ, ต่างจังหวัด 2-3 วันทำการค่ะ</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>สามารถชำระเงินปลายทางได้หรือไม่?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>ได้ค่ะ เรามีบริการเก็บเงินปลายทาง (COD) โดยมีค่าธรรมเนียมเพิ่มเติม 20 บาท</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>หากสินค้ามีปัญหา สามารถคืนได้หรือไม่?</span>
+                            <span class="faq-icon">▼</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>สามารถคืนสินค้าได้ภายใน 7 วันหลังจากได้รับสินค้า กรุณาติดต่อฝ่ายบริการลูกค้าเพื่อดำเนินการค่ะ</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <div class="bottom-spacer"></div>
+        <!-- Bottom Navigation would go here, assuming this page is part of the main app flow -->
+    </div>
+
+    <script src="contact.js"></script>
+</body>
+</html>

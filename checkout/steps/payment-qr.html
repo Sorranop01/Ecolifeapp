@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - โอนเงินผ่านธนาคาร</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="payment-qr.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">โอนเงินผ่านธนาคาร</h1>
+        </header>
+
+        <main class="payment-content">
+            <div class="bank-details-section">
+                <h3 class="section-title">โอนเงินเข้าบัญชีธนาคาร</h3>
+                <div class="bank-detail-row">
+                    <span class="detail-label">ธนาคาร</span>
+                    <span class="detail-value">ไทยพาณิชย์ (SCB)</span>
+                </div>
+                <div class="bank-detail-row">
+                    <span class="detail-label">ชื่อบัญชี</span>
+                    <span class="detail-value">บริษัท อีโคไลฟ์ ฟู้ดส์ จำกัด</span>
+                </div>
+                <div class="bank-detail-row">
+                    <span class="detail-label">เลขที่บัญชี</span>
+                    <div class="detail-value with-copy">
+                        <span id="accountNumber">123-4-56789-0</span>
+                        <button class="copy-btn" id="copyBtn">คัดลอก</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-slip-section">
+                <p>หลังจากโอนเงินแล้ว กรุณาแนบสลิปเพื่อยืนยัน</p>
+                <button class="upload-button" id="uploadSlipBtn">
+                    <span>+</span> แนบสลิป
+                </button>
+                <input type="file" id="slipUploader" accept="image/*" style="display: none;">
+                <div class="slip-preview" id="slipPreview" style="display: none;">
+                    <img id="slipPreviewImage" src="#" alt="Slip Preview">
+                    <span id="slipFileName"></span>
+                </div>
+            </div>
+        </main>
+
+        <footer class="bottom-action-bar">
+            <div class="total-summary">
+                <span class="total-label">ยอดที่ต้องชำระ:</span>
+                <span class="total-price" id="finalPrice">฿0.00</span>
+            </div>
+            <button class="place-order-button" id="confirmPaymentBtn" disabled>แจ้งการชำระเงิน</button>
+        </footer>
+    </div>
+    <script src="payment-qr.js"></script>
+</body>
+</html>

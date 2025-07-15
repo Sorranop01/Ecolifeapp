@@ -1,0 +1,85 @@
+/* Styles for Contact/Help Center Page */
+
+body {
+    background-color: var(--background-secondary);
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-content {
+    padding: var(--space-lg);
+}
+
+.contact-card {
+    background-color: var(--background-primary);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-md);
+}
+
+.contact-title {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-xs);
+}
+
+.contact-subtitle {
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+}
+
+.faq-section {
+    margin-top: var(--space-2xl);
+}
+
+.section-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    margin-bottom: var(--space-md);
+}
+
+.faq-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--background-primary);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-sm);
+    cursor: pointer;
+}
+
+.see-all-faq {
+    display: block;
+    text-align: center;
+    color: var(--primary-500);
+    font-weight: var(--font-semibold);
+    margin-top: var(--space-lg);
+}

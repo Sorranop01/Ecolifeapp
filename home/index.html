@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - อาหารเพื่อสุขภาพ จัดส่งฟรีทุกออเดอร์</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <div class="logo">Eco Life</div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="notification-btn" aria-label="การแจ้งเตือน">
+                        <span style="font-size: 20px;">🔔</span>
+                    </button>
+                    <button class="icon-btn cart-badge" id="cart-btn" aria-label="ตะกร้าสินค้า">
+                        <span style="font-size: 20px;">🛒</span>
+                        <span class="badge" id="cart-count" style="display: none;">0</span>
+                    </button>
+                </div>
+            </div>
+            <div class="search-bar">
+                <span style="color: var(--medium-gray);">🔍</span>
+                <input type="text" class="search-input" placeholder="ค้นหาอาหารเพื่อสุขภาพ..." id="search-input" autocomplete="off">
+            </div>
+        </header>
+        
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>อาหารเพื่อสุขภาพ<br>จัดส่งฟรีทุกออเดอร์</h1>
+                <p>สั่งง่าย จัดส่งไว ครบทุกแบรนด์ดัง</p>
+                <button class="cta-button" id="order-now-btn">สั่งเลย →</button>
+            </div>
+        </section>
+        
+        <!-- Categories -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">หมวดหมู่สินค้า</h2>
+                <a href="../Product/listing/product-listing.html?view=categories" class="see-all" id="see-all-categories">ดูทั้งหมด →</a>
+            </div>
+            <div class="categories-grid">
+                <div class="category-card" data-category="clean-food">
+                    <div class="category-icon" style="background-color: var(--soft-mint);">🥗</div>
+                    <div class="category-name">อาหารคลีน</div>
+                    <div class="category-count">156 รายการ</div>
+                </div>
+                <div class="category-card" data-category="healthy-snacks">
+                    <div class="category-icon" style="background-color: var(--accent-orange);">🍪</div>
+                    <div class="category-name">ขนมสุขภาพ</div>
+                    <div class="category-count">89 รายการ</div>
+                </div>
+                <div class="category-card" data-category="beverages">
+                    <div class="category-icon" style="background-color: var(--accent-blue);">🥤</div>
+                    <div class="category-name">เครื่องดื่ม</div>
+                    <div class="category-count">67 รายการ</div>
+                </div>
+                <div class="category-card" data-category="supplements">
+                    <div class="category-icon" style="background-color: var(--warning);">💊</div>
+                    <div class="category-name">อาหารเสริม</div>
+                    <div class="category-count">124 รายการ</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Featured Products -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">สินค้าแนะนำ</h2>
+                <a href="../Product/listing/product-listing.html?filter=featured" class="see-all" id="see-all-products">ดูทั้งหมด →</a>
+            </div>
+            <div class="products-scroll">
+                <div class="product-card" data-product-id="1">
+                    <div class="product-image">
+                        <span class="free-delivery-badge">จัดส่งฟรี</span>
+                        <span class="discount-badge">-18%</span>
+                        <div class="product-image-placeholder">🍱</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">Healthy Choice</div>
+                        <div class="product-name">ข้าวกล่องคลีน ไก่ย่าง</div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">4.8</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="price-group">
+                                <span class="product-price">฿89</span>
+                                <span class="original-price">฿109</span>
+                                <div class="product-points">
+                                    <span class="points-icon"></span>
+                                    <span>รับ 89 แต้ม</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" data-product-id="1" aria-label="เพิ่มลงตะกร้า">+</button>
+                        </div>
+                        <div class="health-tags">
+                            <span class="health-tag">ต่ำแคล</span>
+                            <span class="health-tag">โปรตีนสูง</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-product-id="2">
+                    <div class="product-image">
+                        <span class="free-delivery-badge">จัดส่งฟรี</span>
+                        <div class="product-image-placeholder">🥗</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">Pure Food</div>
+                        <div class="product-name">สลัดผักสด น้ำสลัดงา</div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐</span>
+                            <span class="rating-number">4.6</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="price-group">
+                                <span class="product-price">฿79</span>
+                                <div class="product-points">
+                                    <span class="points-icon"></span>
+                                    <span>รับ 79 แต้ม</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" data-product-id="2" aria-label="เพิ่มลงตะกร้า">+</button>
+                        </div>
+                        <div class="health-tags">
+                            <span class="health-tag">ออร์แกนิค</span>
+                            <span class="health-tag">ไฟเบอร์สูง</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-product-id="3">
+                    <div class="product-image">
+                        <span class="free-delivery-badge">จัดส่งฟรี</span>
+                        <span class="discount-badge">-14%</span>
+                        <div class="product-image-placeholder">🍪</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">Organic Life</div>
+                        <div class="product-name">โปรตีนบาร์ ช็อกโกแลต</div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐⭐</span>
+                            <span class="rating-number">4.7</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="price-group">
+                                <span class="product-price">฿59</span>
+                                <span class="original-price">฿69</span>
+                                <div class="product-points">
+                                    <span class="points-icon"></span>
+                                    <span>รับ 59 แต้ม</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" data-product-id="3" aria-label="เพิ่มลงตะกร้า">+</button>
+                        </div>
+                        <div class="health-tags">
+                            <span class="health-tag">โปรตีนสูง</span>
+                            <span class="health-tag">พลังงาน</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card" data-product-id="4">
+                    <div class="product-image">
+                        <span class="free-delivery-badge">จัดส่งฟรี</span>
+                        <div class="product-image-placeholder">🥤</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="brand-name">Healthy Choice</div>
+                        <div class="product-name">น้ำผลไม้สกัดเย็น</div>
+                        <div class="product-rating">
+                            <span class="stars">⭐⭐⭐⭐</span>
+                            <span class="rating-number">4.5</span>
+                        </div>
+                        <div class="product-meta">
+                            <div class="price-group">
+                                <span class="product-price">฿49</span>
+                                <div class="product-points">
+                                    <span class="points-icon"></span>
+                                    <span>รับ 49 แต้ม</span>
+                                </div>
+                            </div>
+                            <button class="add-to-cart-btn" data-product-id="4" aria-label="เพิ่มลงตะกร้า">+</button>
+                        </div>
+                        <div class="health-tags">
+                            <span class="health-tag">วิตามินสูง</span>
+                            <span class="health-tag">ไม่มีน้ำตาล</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Simple Promotion Section - แทรกหลัง Hero Section -->
+<section class="section">
+    <div class="section-header">
+        <h2 class="section-title">🔥 โปรโมชั่นพิเศษ</h2>
+        <a href="../promotion/list/promotions.html" class="see-all" id="see-all-promotions">ดูทั้งหมด →</a>
+    </div>
+    
+    <div class="promotions-scroll">
+        <!-- Promotion Card 1 -->
+        <div class="promotion-card" data-promotion="promo-1">
+            <div class="promotion-badge">Flash Sale</div>
+            <div class="promotion-content">
+                <div class="promotion-icon">🍱</div>
+                <div class="promotion-title">ข้าวกล่องคลีน</div>
+                <div class="promotion-discount">ลด 50%</div>
+                <div class="promotion-price">เริ่มต้น ฿89</div>
+            </div>
+        </div>
+
+        <!-- Promotion Card 2 -->
+        <div class="promotion-card" data-promotion="promo-2">
+            <div class="promotion-badge">ซื้อ 2 แถม 1</div>
+            <div class="promotion-content">
+                <div class="promotion-icon">🥤</div>
+                <div class="promotion-title">เครื่องดื่มเฮลท์ตี้</div>
+                <div class="promotion-discount">ซื้อ 2 แถม 1</div>
+                <div class="promotion-price">เริ่มต้น ฿49</div>
+            </div>
+        </div>
+
+        <!-- Promotion Card 3 -->
+        <div class="promotion-card" data-promotion="promo-3">
+            <div class="promotion-badge">สมาชิกใหม่</div>
+            <div class="promotion-content">
+                <div class="promotion-icon">🎁</div>
+                <div class="promotion-title">รับแต้มฟรี</div>
+                <div class="promotion-discount">1,000 แต้ม</div>
+                <div class="promotion-price">สมัครเลย!</div>
+            </div>
+        </div>
+
+        <!-- Promotion Card 4 -->
+        <div class="promotion-card" data-promotion="promo-4">
+            <div class="promotion-badge">จัดส่งฟรี</div>
+            <div class="promotion-content">
+                <div class="promotion-icon">🚚</div>
+                <div class="promotion-title">ซื้อครบ 500</div>
+                <div class="promotion-discount">ส่งฟรี</div>
+                <div class="promotion-price">+ ของแถม</div>
+            </div>
+        </div>
+
+        <!-- Promotion Card 5 -->
+        <div class="promotion-card" data-promotion="promo-5">
+            <div class="promotion-badge">Limited</div>
+            <div class="promotion-content">
+                <div class="promotion-icon">💊</div>
+                <div class="promotion-title">วิตามินรวม</div>
+                <div class="promotion-discount">ลด 30%</div>
+                <div class="promotion-price">เริ่มต้น ฿159</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- Member Benefits Preview -->
+        <section class="benefits-banner">
+            <h3>🎁 สมาชิกใหม่รับฟรี 500 แต้ม!</h3>
+            <p>พร้อมสิทธิพิเศษมากมาย และจัดส่งฟรีทุกออเดอร์</p>
+            <button class="secondary-button" id="signup-btn">สมัครเลย</button>
+        </section>
+        
+        <!-- Brand Partners -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">แบรนด์พาร์ทเนอร์</h2>
+                <a href="../Product/listing/product-listing.html?view=brands" class="see-all" id="see-all-brands">ดูทั้งหมด →</a>
+            </div>
+            <div class="brands-list">
+                <div class="brand-item" data-brand="brand-a">
+                    <span class="brand-logo">🌿</span>
+                    <span class="brand-name">Healthy Choice</span>
+                </div>
+                <div class="brand-item" data-brand="brand-b">
+                    <span class="brand-logo">🌱</span>
+                    <span class="brand-name">Pure Food</span>
+                </div>
+                <div class="brand-item" data-brand="brand-c">
+                    <span class="brand-logo">🍃</span>
+                    <span class="brand-name">Organic Life</span>
+                </div>
+                <div class="brand-item" data-brand="brand-d">
+                    <span class="brand-logo">✨</span>
+                    <span class="brand-name">Clean Eat</span>
+                </div>
+                <div class="brand-item" data-brand="brand-e">
+                    <span class="brand-logo">🌸</span>
+                    <span class="brand-name">Fresh Daily</span>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bottom Spacer -->
+        <div class="bottom-spacer"></div>
+        
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="index.html" class="nav-item active" data-nav="home">
+                <div class="nav-icon">🏠</div>
+                <span class="nav-label">หน้าแรก</span>
+            </a>
+            <a href="../Product/listing/product-listing.html?view=all" class="nav-item" data-nav="categories">
+                <div class="nav-icon">📂</div>
+                <span class="nav-label">หมวดหมู่</span>
+            </a>
+            <a href="../member/dashboard/member-dashboard.html" class="nav-item" data-nav="member">
+                <div class="nav-icon">👤</div>
+                <span class="nav-label">สมาชิก</span>
+            </a>
+            <a href="../member/profile/user-profile.html" class="nav-item" data-nav="account">
+                <div class="nav-icon">⚙️</div>
+                <span class="nav-label">บัญชี</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>กำลังโหลด...</p>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div id="success-message" class="success-message" style="display: none;">
+        <div class="success-content">
+            <span class="success-icon">✅</span>
+            <span class="success-text">เพิ่มลงตะกร้าสำเร็จ!</span>
+        </div>
+    </div>
+
+    <script src="home.js"></script>
+</body>
+</html>

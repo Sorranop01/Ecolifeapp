@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback System - Health Food Platform</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="common.css"> <link rel="stylesheet" href="feedback.css"> </head>
+<body>
+    <div class="feedback-container">
+        <div class="feedback-header">
+            <button class="back-button">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15 18l-6-6 6-6"/>
+                </svg>
+            </button>
+            <h1>ให้คะแนนออเดอร์ของคุณ</h1>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+        
+        <div class="overall-rating fade-in" id="step1">
+            <div class="order-info">
+                <div class="order-number">Order #HF2024-0847</div>
+                <div class="order-items">สลัดอกไก่ย่าง, น้ำผลไม้สด, ข้าวกล้องผัด</div>
+            </div>
+            
+            <h2 class="rating-prompt">คุณพอใจกับออเดอร์นี้แค่ไหน?</h2>
+            
+            <div class="star-rating">
+                <span class="star" data-rating="1">⭐</span>
+                <span class="star" data-rating="2">⭐</span>
+                <span class="star" data-rating="3">⭐</span>
+                <span class="star" data-rating="4">⭐</span>
+                <span class="star" data-rating="5">⭐</span>
+            </div>
+            
+            <p style="color: #6b7280; margin-bottom: 24px;">แตะเพื่อให้คะแนน</p>
+            
+            <div class="emoji-reactions">
+                <button class="emoji-btn" data-mood="love">😍</button>
+                <button class="emoji-btn" data-mood="happy">😊</button>
+                <button class="emoji-btn" data-mood="neutral">😐</button>
+                <button class="emoji-btn" data-mood="sad">😢</button>
+            </div>
+            
+            <button class="btn-primary" onclick="goToStep2()">ให้คะแนนรายละเอียด</button>
+            <button class="btn-secondary" onclick="submitQuick()">ส่งคะแนนด่วน</button>
+        </div>
+        
+        <div class="category-ratings" id="step2">
+            <h2 style="margin-bottom: 24px;">ให้คะแนนในแต่ละด้าน</h2>
+            
+            <div class="category-item">
+                <div class="category-header">
+                    <div class="category-icon">🍱</div>
+                    <div class="category-title">คุณภาพอาหาร</div>
+                </div>
+                <div class="mini-stars">
+                    <span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag">รสชาติดี</span><span class="tag">สด สะอาด</span><span class="tag">ปริมาณพอดี</span><span class="tag">คุ้มค่า</span>
+                </div>
+            </div>
+            
+            <div class="category-item">
+                <div class="category-header">
+                    <div class="category-icon">🚚</div>
+                    <div class="category-title">การจัดส่ง</div>
+                </div>
+                <div class="mini-stars">
+                    <span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag">ตรงเวลา</span><span class="tag">บรรจุภัณฑ์ดี</span><span class="tag">อุณหภูมิเหมาะสม</span><span class="tag">พนักงานบริการดี</span>
+                </div>
+            </div>
+            
+            <div class="category-item">
+                <div class="category-header">
+                    <div class="category-icon">💬</div>
+                    <div class="category-title">การบริการของแอดมิน</div>
+                </div>
+                <div class="mini-stars">
+                    <span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag">ตอบเร็ว</span><span class="tag">ให้ข้อมูลชัดเจน</span><span class="tag">แก้ปัญหาได้</span><span class="tag">สุภาพ</span>
+                </div>
+            </div>
+            
+            <div class="category-item">
+                <div class="category-header">
+                    <div class="category-icon">📱</div>
+                    <div class="category-title">ประสบการณ์การใช้แอป</div>
+                </div>
+                <div class="mini-stars">
+                    <span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span><span class="mini-star">⭐</span>
+                </div>
+                <div class="quick-tags">
+                    <span class="tag">ใช้งานง่าย</span><span class="tag">โหลดเร็ว</span><span class="tag">ค้นหาสะดวก</span><span class="tag">ชำระเงินง่าย</span>
+                </div>
+            </div>
+            
+            <button class="btn-primary" onclick="goToStep3()">เพิ่มความคิดเห็น</button>
+            <a href="#" class="skip-link" onclick="submitRatings()">ข้ามและส่งคะแนน</a>
+        </div>
+        
+        <div class="detailed-feedback" id="step3">
+            <h2 style="margin-bottom: 24px;">ความคิดเห็นเพิ่มเติม</h2>
+            
+            <div class="feedback-section">
+                <div class="section-title">
+                    <span>💭</span>
+                    <span>มีอะไรอยากบอกเราเพิ่มเติมไหม?</span>
+                </div>
+                <textarea class="textarea" placeholder="เช่น สิ่งที่ชอบ, สิ่งที่อยากให้ปรับปรุง, เมนูที่อยากให้เพิ่ม..."></textarea>
+            </div>
+            
+            <div class="feedback-section">
+                <div class="section-title">
+                    <span>📸</span>
+                    <span>แชร์รูปภาพ (ถ้ามี)</span>
+                </div>
+                <div class="photo-upload">
+                    <div class="upload-icon">📷</div>
+                    <p>แตะเพื่อเพิ่มรูป</p>
+                    <p style="font-size: 12px; color: #9ca3af;">สูงสุด 3 รูป</p>
+                </div>
+            </div>
+            
+            <button class="btn-primary" onclick="submitFeedback()">ส่งฟีดแบค</button>
+            <a href="#" class="skip-link" onclick="submitFeedback()">ข้ามและส่ง</a>
+        </div>
+        
+        <div class="thank-you" id="step4">
+            <div class="success-icon bounce">✓</div>
+            <h2 style="margin-bottom: 16px;">ขอบคุณสำหรับความคิดเห็น!</h2>
+            <p style="color: #6b7280;">ความคิดเห็นของคุณช่วยให้เราพัฒนาบริการได้ดีขึ้น</p>
+            
+            <div class="points-earned bounce">
+                +50 แต้มสะสม
+            </div>
+            
+            <button class="btn-primary" style="margin-top: 32px;" onclick="location.href='/'">กลับสู่หน้าหลัก</button>
+        </div>
+    </div>
+    
+    <script src="feedback.js"></script>
+</body>
+</html>

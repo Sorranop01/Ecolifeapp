@@ -1,0 +1,442 @@
+/* nutrition.css - สไตล์สำหรับหน้าคำนวณโภชนาการ */
+
+/* General Layout & Base Styles from common.css might apply */
+.main-content .container {
+    padding: 16px;
+}
+
+/* Tab Navigation */
+.tab-navigation {
+    display: flex;
+    overflow-x: auto;
+    background-color: var(--light-gray, #F8F9FA);
+    border-radius: 12px;
+    padding: 8px;
+    margin-bottom: 24px;
+    gap: 8px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+.tab-navigation::-webkit-scrollbar {
+    display: none;
+}
+.tab-btn {
+    flex: 1 0 auto;
+    padding: 12px 16px;
+    border: none;
+    background-color: transparent;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--medium-gray, #6C757D);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+.tab-btn.active {
+    background-color: var(--primary-white, #FFFFFF);
+    color: var(--primary-green, #2ECC71);
+    font-weight: 600;
+    box-shadow: 0 4px 12px var(--shadow-light, rgba(0, 0, 0, 0.08));
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease-in-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Card Styles */
+.card {
+    background-color: var(--primary-white, #FFFFFF);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px var(--shadow-light, rgba(0, 0, 0, 0.08));
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+}
+.card-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--dark-gray, #2C3E50);
+}
+.card-body {
+    padding: 20px;
+}
+
+/* Grid Layouts */
+.nutrition-grid, .bmi-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 24px;
+}
+
+/* Meal Selector Card */
+.meal-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.meal-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    background-color: var(--light-gray, #F8F9FA);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.meal-btn.active {
+    border-color: var(--primary-green, #2ECC71);
+    background-color: var(--soft-mint, #A8E6CF);
+    box-shadow: 0 4px 8px rgba(46, 204, 113, 0.2);
+    transform: translateY(-2px);
+}
+.meal-emoji { font-size: 24px; }
+.meal-label { font-size: 12px; font-weight: 500; }
+
+/* Form & Search */
+.form-group { margin-bottom: 16px; }
+.form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--medium-gray, #6C757D);
+    margin-bottom: 6px;
+}
+.form-input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #dee2e6;
+    background-color: var(--light-gray, #F8F9FA);
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+.form-input:focus {
+    outline: none;
+    border-color: var(--primary-green, #2ECC71);
+    background-color: var(--primary-white, #FFFFFF);
+    box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+}
+.search-input-container { position: relative; }
+.search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--primary-white, #FFFFFF);
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px var(--shadow-medium, rgba(0, 0, 0, 0.12));
+    z-index: 10;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none; /* Controlled by JS */
+}
+.search-result-item {
+    padding: 12px 16px;
+    cursor: pointer;
+}
+.search-result-item:hover {
+    background-color: var(--light-gray, #F8F9FA);
+}
+.quantity-inputs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+}
+.btn-primary {
+    background-color: var(--primary-green, #2ECC71);
+    color: var(--primary-white, #FFFFFF);
+    box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+.btn-primary:hover {
+    background-color: var(--success, #27AE60);
+    transform: translateY(-2px);
+}
+.btn-secondary {
+    background-color: var(--light-gray, #F8F9FA);
+    color: var(--dark-gray, #2C3E50);
+}
+.btn-ghost {
+    background: transparent;
+    color: var(--medium-gray, #6C757D);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.btn-ghost:hover {
+    color: var(--dark-gray, #2C3E50);
+}
+.btn-lg {
+    width: 100%;
+    padding: 16px;
+}
+
+/* Nutrition Summary Card */
+.nutrition-summary-card .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    text-align: center;
+    margin-bottom: 24px;
+}
+.nutrition-item .nutrition-value {
+    font-size: 20px;
+    font-weight: 700;
+}
+.nutrition-item .nutrition-label {
+    font-size: 12px;
+    color: var(--medium-gray, #6C757D);
+}
+.nutrition-item .nutrition-unit {
+    font-size: 10px;
+    color: var(--medium-gray, #6C757D);
+}
+.nutrition-item.calories .nutrition-value { color: var(--accent-orange, #FF6B35); }
+.nutrition-item.protein .nutrition-value { color: var(--accent-blue, #3498DB); }
+.nutrition-item.carbs .nutrition-value { color: var(--primary-green, #2ECC71); }
+.nutrition-item.fat .nutrition-value { color: var(--warning, #F39C12); }
+
+/* Progress Ring */
+.progress-container {
+    display: flex;
+    justify-content: center;
+}
+.progress-ring-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+.progress-ring {
+    transform: rotate(-90deg);
+}
+.progress-ring-bg, .progress-ring-fill {
+    fill: none;
+    stroke-width: 12;
+}
+.progress-ring-bg {
+    stroke: #e9ecef;
+}
+.progress-ring-fill {
+    stroke: var(--primary-green, #2ECC71);
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.5s ease;
+}
+.progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.progress-percentage {
+    font-size: 24px;
+    font-weight: 700;
+}
+.progress-goal {
+    font-size: 12px;
+    color: var(--medium-gray, #6C757D);
+}
+
+/* Today's Meals Card */
+.meals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.meal-group {
+    border-left: 3px solid var(--soft-mint, #A8E6CF);
+    padding-left: 12px;
+}
+.meal-group-title {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.meal-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+.meal-list-item:last-child {
+    border-bottom: none;
+}
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--medium-gray, #6C757D);
+}
+.empty-icon { font-size: 48px; opacity: 0.5; margin-bottom: 16px; }
+
+/* BMI Tab */
+.bmi-inputs .input-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.bmi-result {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #e9ecef;
+    text-align: center;
+}
+.bmi-score {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    border: 8px solid var(--primary-green, #2ECC71);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.bmi-value .bmi-number {
+    font-size: 36px;
+    font-weight: 700;
+}
+.bmi-category {
+    font-weight: 600;
+    color: var(--primary-green, #2ECC71);
+}
+.calorie-needs h4 {
+    margin-bottom: 16px;
+    font-size: 16px;
+}
+.calorie-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+.calorie-item {
+    background-color: var(--light-gray, #F8F9FA);
+    padding: 16px;
+    border-radius: 12px;
+}
+.calorie-value {
+    font-size: 24px;
+    font-weight: 700;
+}
+.calorie-label {
+    font-size: 12px;
+    color: var(--medium-gray, #6C757D);
+}
+
+/* Summary Tab */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.summary-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    border-radius: 12px;
+}
+.summary-card.calories-card { background-color: var(--soft-mint, #A8E6CF); }
+.summary-card.protein-card { background-color: #d6eaf8; } /* Light blue */
+.summary-card.carbs-card { background-color: #fdebd0; } /* Light orange */
+.summary-card.fat-card { background-color: #fef9e7; } /* Light yellow */
+.summary-icon { font-size: 32px; }
+.summary-value { font-size: 24px; font-weight: 700; }
+.summary-label { font-size: 12px; color: var(--medium-gray, #6C757D); }
+
+.chart-placeholder, .history-placeholder {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--medium-gray, #6C757D);
+    background-color: var(--light-gray, #F8F9FA);
+    border-radius: 12px;
+}
+.chart-icon, .history-icon { font-size: 48px; opacity: 0.5; margin-bottom: 16px; }
+
+/* Header & Nav from HTML (should be in common.css) */
+.header {
+    background-color: var(--primary-white, #FFFFFF);
+    box-shadow: 0 2px 4px var(--shadow-light, rgba(0, 0, 0, 0.08));
+}
+.header .container {
+    max-width: 100%;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+}
+.page-title h1 {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.icon {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    border-top: 1px solid #f0f0f0;
+    background-color: var(--primary-white, #FFFFFF);
+    box-shadow: 0 -2px 4px var(--shadow-light, rgba(0, 0, 0, 0.08));
+}
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    color: var(--medium-gray, #6C757D);
+    text-decoration: none;
+    font-size: 10px;
+    flex: 1;
+}
+.nav-item.active {
+    color: var(--primary-green, #2ECC71);
+}
+.nav-icon {
+    width: 24px;
+    height: 24px;
+}

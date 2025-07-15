@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - โปรโมชั่น</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="promotions.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">โปรโมชั่นและดีลพิเศษ</h1>
+        </header>
+
+        <main class="content">
+            <!-- Filter Tabs -->
+            <div class="filter-tabs horizontal-scroll" id="filterTabs">
+                <button class="filter-chip active" data-filter="all">ทั้งหมด</button>
+                <button class="filter-chip" data-filter="sale">ลดราคา</button>
+                <button class="filter-chip" data-filter="bogo">ซื้อ 1 แถม 1</button>
+                <button class="filter-chip" data-filter="member">สำหรับสมาชิก</button>
+                <button class="filter-chip" data-filter="new">สินค้าใหม่</button>
+            </div>
+
+            <!-- Promotion List -->
+            <div class="promotion-list-container" id="promotionListContainer">
+                <!-- Promotions will be populated by JS -->
+            </div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🎉</div>
+                <h2 class="empty-title">ไม่มีโปรโมชั่นในขณะนี้</h2>
+                <p class="empty-text">โปรดกลับมาตรวจสอบอีกครั้งในภายหลัง</p>
+                <a href="index.html" class="empty-button">กลับสู่หน้าแรก</a>
+            </div>
+        </main>
+
+        <!-- Bottom Spacer -->
+        <div class="bottom-spacer"></div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="../../home/index.html" class="nav-item" data-nav="home">
+                <div class="nav-icon">🏠</div>
+                <span class="nav-label">หน้าแรก</span>
+            </a>
+            <a href="../../Product/listing/product-listing.html" class="nav-item" data-nav="categories">
+                <div class="nav-icon">📂</div>
+                <span class="nav-label">หมวดหมู่</span>
+            </a>
+            <a href="../../member/dashboard/member-dashboard.html" class="nav-item" data-nav="member">
+                <div class="nav-icon">👤</div>
+                <span class="nav-label">สมาชิก</span>
+            </a>
+            <a href="../../member/profile/user-profile.html" class="nav-item" data-nav="account">
+                <div class="nav-icon">⚙️</div>
+                <span class="nav-label">บัญชี</span>
+            </a>
+        </nav>
+    </div>
+    <script src="promotions.js"></script>
+</body>
+</html>

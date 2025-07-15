@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - บัญชีของฉัน</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="user-profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-nav">
+                <h1 class="header-title">บัญชีของฉัน</h1>
+                <div class="header-actions">
+                    <button class="icon-button" id="notificationsButton">🔔</button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Profile Card -->
+        <div class="profile-card">
+            <div class="profile-header">
+                <div class="avatar-wrapper">
+                    <div class="avatar" id="userAvatar">👩‍🍳</div>
+                    <div class="edit-avatar" id="editAvatarBtn">📷</div>
+                </div>
+                <div class="profile-info">
+                    <div class="profile-name" id="userName">คุณสมศรี ใจดี</div>
+                    <div class="profile-tier">
+                        <span id="tierIcon">✨</span>
+                        <span id="tierName">Gold Member</span>
+                    </div>
+                    <div class="member-since" id="memberSince">สมาชิกตั้งแต่ มกราคม 2566</div>
+                </div>
+                <button class="edit-profile-btn" id="editProfileButton">✏️</button>
+            </div>
+            
+            <div class="quick-stats">
+                <a href="../order-history/order-history.html" class="stat-item">
+                    <div class="stat-value" id="totalOrders">89</div>
+                    <div class="stat-label">คำสั่งซื้อ</div>
+                </a>
+                <a href="../review-history/review-history.html" class="stat-item">
+                    <div class="stat-value" id="reviewRating">4.8</div>
+                    <div class="stat-label">คะแนนรีวิว</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Account Settings -->
+        <div class="menu-section">
+            <h2 class="section-title">ข้อมูลบัญชี</h2>
+            <a href="personal-info.html" class="menu-item">
+                <div class="menu-icon">👤</div>
+                <div class="menu-content">
+                    <div class="menu-title">ข้อมูลส่วนตัว</div>
+                    <div class="menu-subtitle">ชื่อ, อีเมล, เบอร์โทร</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </a>
+            <a href="../health-center/health-center.html" class="menu-item health-profile-item">
+                <div class="menu-icon">❤️</div>
+                <div class="menu-content">
+                    <div class="menu-title">Health Profile</div>
+                    <div class="menu-subtitle">เป้าหมายสุขภาพ, ข้อจำกัดอาหาร</div>
+                </div>
+                <span class="menu-arrow">›</span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="healthProgress"></div>
+                </div>
+            </a>
+            <a href="../manage-addresses/manage-addresses.html" class="menu-item">
+                <div class="menu-icon">📍</div>
+                <div class="menu-content">
+                    <div class="menu-title">ที่อยู่จัดส่ง</div>
+                    <div class="menu-subtitle" id="addressCount">จัดการที่อยู่ 3 รายการ</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </a>
+            <a href="manage-payments.html" class="menu-item">
+                <div class="menu-icon">💳</div>
+                <div class="menu-content">
+                    <div class="menu-title">วิธีชำระเงิน</div>
+                    <div class="menu-subtitle" id="paymentMethods">บัตรเครดิต, PromptPay</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </a>
+        </div>
+        
+        <!-- App Settings -->
+        <div class="menu-section">
+            <h2 class="section-title">การตั้งค่าแอป</h2>
+            <div class="menu-item">
+                <div class="menu-icon">🔔</div>
+                <div class="menu-content">
+                    <div class="menu-title">การแจ้งเตือน</div>
+                    <div class="menu-subtitle">โปรโมชั่น, สถานะออเดอร์</div>
+                </div>
+                <div class="toggle-switch" id="notificationToggle">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+            <div class="menu-item">
+                <div class="menu-icon">📧</div>
+                <div class="menu-content">
+                    <div class="menu-title">อีเมลการตลาด</div>
+                    <div class="menu-subtitle">รับข่าวสารและโปรโมชั่น</div>
+                </div>
+                <div class="toggle-switch" id="emailToggle">
+                    <div class="toggle-knob"></div>
+                </div>
+            </div>
+            <div class="menu-item" id="changeLanguageBtn">
+                <div class="menu-icon">🌐</div>
+                <div class="menu-content">
+                    <div class="menu-title">ภาษา</div>
+                    <div class="menu-subtitle" id="currentLanguage">ไทย</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </div>
+        </div>
+        
+        <!-- Support -->
+        <div class="menu-section">
+            <h2 class="section-title">ช่วยเหลือและการสนับสนุน</h2>
+            <a href="../contact/contact.html" class="menu-item">
+                <div class="menu-icon">💬</div>
+                <div class="menu-content">
+                    <div class="menu-title">ติดต่อเรา</div>
+                    <div class="menu-subtitle">แชท, โทร, อีเมล</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </a>
+            <a href="../../legal/terms.html" class="menu-item" target="_blank" rel="noopener noreferrer">
+                <div class="menu-icon">📜</div>
+                <div class="menu-content">
+                    <div class="menu-title">ข้อกำหนดและนโยบาย</div>
+                    <div class="menu-subtitle">เงื่อนไขการใช้งาน</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </a>
+            <div class="menu-item" id="rateAppBtn">
+                <div class="menu-icon">⭐</div>
+                <div class="menu-content">
+                    <div class="menu-title">ให้คะแนนแอป</div>
+                    <div class="menu-subtitle">บอกเราว่าคุณคิดอย่างไร</div>
+                </div>
+                <span class="menu-arrow">›</span>
+            </div>
+        </div>
+        
+        <!-- Version Info -->
+        <div class="version-info">
+            <div class="app-version">Eco Life เวอร์ชั่น 2.1.0</div>
+            <div class="copyright">© 2567 Eco Life. สงวนลิขสิทธิ์</div>
+        </div>
+        
+        <!-- Logout Button -->
+        <button class="logout-button" id="logoutBtn">ออกจากระบบ</button>
+        
+        <!-- Bottom Spacer -->
+        <div class="bottom-spacer"></div>
+        
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="../../home/index.html" class="nav-item" data-nav="home">
+                <div class="nav-icon">🏠</div>
+                <span class="nav-label">หน้าแรก</span>
+            </a>
+            <a href="../../Product/listing/product-listing.html" class="nav-item" data-nav="categories">
+                <div class="nav-icon">📂</div>
+                <span class="nav-label">หมวดหมู่</span>
+            </a>
+            <a href="../dashboard/member-dashboard.html" class="nav-item" data-nav="member">
+                <div class="nav-icon">👤</div>
+                <span class="nav-label">สมาชิก</span>
+            </a>
+            <a href="user-profile.html" class="nav-item active" data-nav="account">
+                <div class="nav-icon">⚙️</div>
+                <span class="nav-label">บัญชีของฉัน</span>
+            </a>
+        </nav>
+    </div>

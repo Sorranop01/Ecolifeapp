@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>การแจ้งเตือน - Health Food Platform</title>
+    <link rel="stylesheet" href="notifications.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="header-content">
+            <button class="back-btn" onclick="goBack()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+            <h1 class="page-title">การแจ้งเตือน</h1>
+            <button class="settings-btn" onclick="toggleSettings()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                    <path d="M12 1V3M12 21V23M4.22 4.22L5.64 5.64M18.36 18.36L19.78 19.78M1 12H3M21 12H23M4.22 19.78L5.64 18.36M18.36 5.64L19.78 4.22" stroke="currentColor" stroke-width="2"/>
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Notification Count Badge -->
+        <div class="notification-summary">
+            <span class="unread-count" id="unreadCount">3</span>
+            <span class="summary-text">ข้อความที่ยังไม่ได้อ่าน</span>
+        </div>
+    </header>
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs">
+        <button class="tab-button active" data-filter="all" onclick="filterNotifications('all')">
+            ทั้งหมด
+        </button>
+        <button class="tab-button" data-filter="unread" onclick="filterNotifications('unread')">
+            ไม่ได้อ่าน
+            <span class="tab-badge">3</span>
+        </button>
+        <button class="tab-button" data-filter="important" onclick="filterNotifications('important')">
+            สำคัญ
+        </button>
+        <button class="tab-button" data-filter="orders" onclick="filterNotifications('orders')">
+            คำสั่งซื้อ
+        </button>
+    </div>
+
+    <!-- Notifications Container -->
+    <main class="notifications-container">
+        <div class="container">
+            <!-- Today's Highlights -->
+            <section class="highlights-section">
+                <h2 class="section-title">วันนี้</h2>
+                
+                <!-- News/Promotion Card -->
+                <div class="highlight-card news-card" data-type="news" data-important="true">
+                    <div class="card-icon">🎉</div>
+                    <div class="card-content">
+                        <h3 class="card-title">เปิดตัวเมนูใหม่แล้ว!</h3>
+                        <p class="card-message">Superfood Bowl Collection พร้อมส่วนลด 25% สำหรับสมาชิก VIP วันแรก!</p>
+                        <div class="card-meta">
+                            <span class="card-time">เมื่อ 1 ชม.ที่แล้ว</span>
+                            <span class="card-category">ข่าวสาร</span>
+                        </div>
+                    </div>
+                    <button class="card-action-btn" onclick="handleNewsAction(this)">
+                        ดูเมนู
+                    </button>
+                </div>
+            </section>
+
+            <!-- Regular Notifications -->
+            <section class="notifications-section">
+                <h2 class="section-title">การแจ้งเตือน</h2>
+                
+                <div class="notifications-list" id="notificationsList">
+                    <!-- Order Notification - Unread -->
+                    <div class="notification-item order unread" data-type="orders" data-read="false" data-important="true" data-id="not-001">
+                        <div class="notification-indicator"></div>
+                        <div class="notification-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M16 3H8C6.9 3 6 3.9 6 5V19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V5C18 3.9 17.1 3 16 3Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M10 7H14M10 11H14M10 15H11" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h3 class="notification-title">คำสั่งซื้อ #ORD001234 กำลังจัดส่ง</h3>
+                            <p class="notification-message">ไรเดอร์กำลังเดินทางไปส่งแล้ว คาดว่าจะถึงภายใน 15-20 นาที</p>
+                            <div class="notification-actions">
+                                <button class="btn btn-primary btn-sm" onclick="trackOrder('ORD001234')">
+                                    ติดตามการส่ง
+                                </button>
+                                <button class="btn btn-secondary btn-sm" onclick="callRider('ORD001234')">
+                                    โทรไรเดอร์
+                                </button>
+                            </div>
+                            <div class="notification-meta">
+                                <span class="notification-time">เมื่อ 5 นาทีที่แล้ว</span>
+                                <span class="notification-category">คำสั่งซื้อ</span>
+                            </div>
+                        </div>
+                        <button class="mark-read-btn" onclick="markAsRead('not-001')" title="ทำเครื่องหมายว่าอ่านแล้ว">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Points Expiry Notification - Unread -->
+                    <div class="notification-item promotion unread" data-type="promotions" data-read="false" data-important="true" data-id="not-002">
+                        <div class="notification-indicator"></div>
+                        <div class="notification-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h3 class="notification-title">แต้มของคุณใกล้หมดอายุแล้ว!</h3>
+                            <p class="notification-message">คุณมีแต้ม 850 แต้ม หมดอายุใน 7 วัน นำไปใช้แลกรีวอร์ดได้เลย</p>
+                            <div class="notification-actions">
+                                <button class="btn btn-primary btn-sm" onclick="usePoints()">
+                                    ใช้แต้มเลย
+                                </button>
+                                <button class="btn btn-ghost btn-sm" onclick="viewRewards()">
+                                    ดูรีวอร์ด
+                                </button>
+                            </div>
+                            <div class="notification-meta">
+                                <span class="notification-time">เมื่อ 2 ชม.ที่แล้ว</span>
+                                <span class="notification-category">โปรโมชั่น</span>
+                            </div>
+                        </div>
+                        <button class="mark-read-btn" onclick="markAsRead('not-002')" title="ทำเครื่องหมายว่าอ่านแล้ว">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Health Tip Notification - Read -->
+                    <div class="notification-item health" data-type="health" data-read="true" data-important="false" data-id="not-003">
+                        <div class="notification-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M19 14C19 18.4 15.4 22 11 22C6.6 22 3 18.4 3 14C3 12.3 3.6 10.6 4.7 9.3L11 2L17.3 9.3C18.4 10.6 19 12.3 19 14Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M12 6V12L16 14" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h3 class="notification-title">เคล็ดลับสุขภาพวันนี้</h3>
+                            <p class="notification-message">ดื่มน้ำให้เพียงพอ 8-10 แก้วต่อวัน เพื่อผิวสวยและสุขภาพดี พร้อมเสริมด้วยผลไม้สีเข้มเพื่อวิตามินซี</p>
+                            <div class="notification-actions">
+                                <button class="btn btn-ghost btn-sm" onclick="viewHealthTips()">
+                                    อ่านเพิ่มเติม
+                                </button>
+                            </div>
+                            <div class="notification-meta">
+                                <span class="notification-time">เมื่อ 1 วันที่แล้ว</span>
+                                <span class="notification-category">สุขภาพ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Welcome Message - Read -->
+                    <div class="notification-item welcome" data-type="system" data-read="true" data-important="false" data-id="not-004">
+                        <div class="notification-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 21V19C20 16.8 18.2 15 16 15H8C5.8 15 4 16.8 4 19V21" stroke="currentColor" stroke-width="2"/>
+                                <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h3 class="notification-title">ยินดีต้อนรับสู่ HealthyFood!</h3>
+                            <p class="notification-message">ขอบคุณที่เป็นสมาชิกใหม่ของเรา เริ่มต้นการเดินทางสู่สุขภาพที่ดีกันเลย</p>
+                            <div class="notification-actions">
+                                <button class="btn btn-primary btn-sm" onclick="exploreProducts()">
+                                    เริ่มช้อปปิ้ง
+                                </button>
+                                <button class="btn btn-ghost btn-sm" onclick="setupProfile()">
+                                    ตั้งค่าโปรไฟล์
+                                </button>
+                            </div>
+                            <div class="notification-meta">
+                                <span class="notification-time">เมื่อ 3 วันที่แล้ว</span>
+                                <span class="notification-category">ระบบ</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Special Offer - Unread -->
+                    <div class="notification-item promotion unread" data-type="promotions" data-read="false" data-important="false" data-id="not-005">
+                        <div class="notification-indicator"></div>
+                        <div class="notification-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 15C21 16.1 20.1 17 19 17H7L3 13V12C3 10.9 3.9 10 5 10H19C20.1 10 21 10.9 21 12V15Z" stroke="currentColor" stroke-width="2"/>
+                                <path d="M21 12L18 7H6L3 12" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="notification-content">
+                            <h3 class="notification-title">Flash Sale วันศุกร์!</h3>
+                            <p class="notification-message">ลด 40% ทุกเมนูสลัด เฉพาะวันนี้เท่านั้น สั่งเลย!</p>
+                            <div class="notification-actions">
+                                <button class="btn btn-primary btn-sm" onclick="viewFlashSale()">
+                                    ช้อปเลย
+                                </button>
+                            </div>
+                            <div class="notification-meta">
+                                <span class="notification-time">เมื่อ 6 ชม.ที่แล้ว</span>
+                                <span class="notification-category">โปรโมชั่น</span>
+                            </div>
+                        </div>
+                        <button class="mark-read-btn" onclick="markAsRead('not-005')" title="ทำเครื่องหมายว่าอ่านแล้ว">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Load More Button -->
+                <button class="load-more-btn" onclick="loadMoreNotifications()" id="loadMoreBtn">
+                    โหลดเพิ่มเติม
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 5V19M5 12L12 19L19 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+            </section>
+
+            <!-- Empty State (Hidden by default) -->
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">🔔</div>
+                <h3 class="empty-title">ไม่มีการแจ้งเตือน</h3>
+                <p class="empty-message">เมื่อมีการแจ้งเตือนใหม่ จะปรากฏที่นี่</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Notification Settings Panel -->
+    <div class="settings-panel" id="settingsPanel">
+        <div class="settings-header">
+            <h3>การตั้งค่าการแจ้งเตือน</h3>
+            <button class="close-settings-btn" onclick="toggleSettings()">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button>
+        </div>
+        <div class="settings-content">
+            <div class="setting-group">
+                <h4>การแจ้งเตือนคำสั่งซื้อ</h4>
+                <div class="setting-item">
+                    <label>สถานะการสั่งซื้อ</label>
+                    <input type="checkbox" class="toggle-switch" checked id="orderStatus">
+                </div>
+                <div class="setting-item">
+                    <label>การจัดส่ง</label>
+                    <input type="checkbox" class="toggle-switch" checked id="deliveryStatus">
+                </div>
+                <div class="setting-item">
+                    <label>การชำระเงิน</label>
+                    <input type="checkbox" class="toggle-switch" checked id="paymentStatus">
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h4>โปรโมชั่นและข้อเสนอ</h4>
+                <div class="setting-item">
+                    <label>โปรโมชั่นพิเศษ</label>
+                    <input type="checkbox" class="toggle-switch" checked id="promotions">
+                </div>
+                <div class="setting-item">
+                    <label>Flash Sale</label>
+                    <input type="checkbox" class="toggle-switch" checked id="flashSales">
+                </div>
+                <div class="setting-item">
+                    <label>แต้มสะสมและรีวอร์ด</label>
+                    <input type="checkbox" class="toggle-switch" checked id="rewards">
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h4>เนื้อหาสุขภาพ</h4>
+                <div class="setting-item">
+                    <label>เคล็ดลับสุขภาพ</label>
+                    <input type="checkbox" class="toggle-switch" checked id="healthTips">
+                </div>
+                <div class="setting-item">
+                    <label>เมนูแนะนำ</label>
+                    <input type="checkbox" class="toggle-switch" checked id="menuSuggestions">
+                </div>
+            </div>
+
+            <div class="setting-group">
+                <h4>การแจ้งเตือนแบบ Push</h4>
+                <div class="setting-item">
+                    <label>เปิดการแจ้งเตือน Push</label>
+                    <input type="checkbox" class="toggle-switch" checked id="pushNotifications">
+                </div>
+                <div class="setting-item">
+                    <label>เสียงแจ้งเตือน</label>
+                    <input type="checkbox" class="toggle-switch" checked id="notificationSound">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay for Settings Panel -->
+    <div class="overlay" id="overlay" onclick="toggleSettings()"></div>
+
+    <!-- Floating Action Button -->
+    <button class="floating-action-btn" onclick="markAllAsRead()" title="ทำเครื่องหมายทั้งหมดว่าอ่านแล้ว">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </button>
+
+    <!-- Bottom Navigation Spacer -->
+    <div class="bottom-spacer"></div>
+
+    <script src="notifications.js"></script>
+</body>
+</html>

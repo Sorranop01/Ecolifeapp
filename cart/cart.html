@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ตะกร้าสินค้า</title>
+    <link rel="stylesheet" href="../../styles/common.css">
+    <link rel="stylesheet" href="cart.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <div class="container">
+        <div class="header-nav">
+    <button class="back-button" id="backButton">←</button>
+    <h1 class="header-title">ตะกร้าสินค้า <span class="cart-count" id="cartCount">(0)</span></h1>
+    <button class="clear-all-button" id="clearAllBtn" title="ล้างตะกร้าทั้งหมด" style="display: none;">🗑️</button>
+    </div>
+        <!-- Free Delivery Banner -->
+        <div class="free-delivery-banner">
+            <span class="delivery-icon">🚚</span>
+            <span>จัดส่งฟรีทุกออเดอร์ ไม่มีขั้นต่ำ!</span>
+        </div>
+        
+        <!-- Cart Content -->
+        <div class="cart-content" id="cartContent">
+            <!-- Cart items will be populated here -->
+        </div>
+        
+        <!-- Empty Cart State -->
+        <div class="empty-cart" id="emptyCart">
+            <div class="empty-icon">🛒</div>
+            <div class="empty-title">ตะกร้าสินค้าว่างเปล่า</div>
+            <div class="empty-text">เพิ่มสินค้าลงตะกร้าเพื่อเริ่มสั่งซื้อ</div>
+            <button class="shop-now-button" id="shopNowButton">เริ่มช้อปปิ้ง</button>
+        </div>
+        
+        <!-- Promo Section -->
+        <div class="promo-section" id="promoSection" style="display: none;">
+            <div class="promo-row" id="couponRow">
+                <div class="promo-label">
+                    <span class="promo-icon">🎫</span>
+                    <span>โค้ดส่วนลด</span>
+                </div>
+                <div class="promo-value">
+                    <span id="couponStatus">เลือกหรือใส่โค้ด</span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+            <div class="promo-row" id="pointsRow">
+                <div class="promo-label">
+                    <span class="promo-icon">🪙</span>
+                    <span>ใช้แต้มสะสม</span>
+                </div>
+                <div class="promo-value">
+                    <span class="promo-badge">มี <span id="availablePoints">1,250</span> แต้ม</span>
+                    <span class="arrow">→</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Order Summary -->
+        <div class="summary-section" id="summarySection" style="display: none;">
+            <h3 class="summary-title">สรุปคำสั่งซื้อ</h3>
+            <div class="summary-row">
+                <span class="summary-label">ราคาสินค้า (<span id="totalItems">0</span> ชิ้น)</span>
+                <span class="summary-value" id="subtotal">฿0</span>
+            </div>
+            <div class="summary-row" id="discountRow" style="display: none;">
+                <span class="summary-label">ส่วนลดสินค้า</span>
+                <span class="summary-value discount-value" id="discountAmount">-฿0</span>
+            </div>
+            <div class="summary-row" id="addonsRow" style="display: none;">
+                <span class="summary-label">เพิ่มเติม</span>
+                <span class="summary-value" id="addonsTotal">฿0</span>
+            </div>
+            <div class="summary-row" id="couponDiscountRow" style="display: none;">
+                <span class="summary-label">ส่วนลดคูปอง</span>
+                <span class="summary-value discount-value" id="couponDiscount">-฿0</span>
+            </div>
+            <div class="summary-row" id="pointsDiscountRow" style="display: none;">
+                <span class="summary-label">ใช้แต้มสะสม</span>
+                <span class="summary-value discount-value" id="pointsDiscount">-฿0</span>
+            </div>
+            <div class="summary-divider"></div>
+            <div class="total-row">
+                <span class="total-label">ยอดรวมทั้งสิ้น</span>
+                <span class="total-value" id="finalTotal">฿0</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">แต้มที่จะได้รับ</span>
+                <span class="summary-value points-value" id="earnedPoints">+0 แต้ม</span>
+            </div>
+        </div>
+        
+        <!-- Bottom Checkout Bar -->
+        <div class="checkout-bar" id="checkoutBar" style="display: none;">
+            <div class="checkout-content">
+                <div class="checkout-info">
+                    <div class="select-all-bottom">
+                        <div class="checkbox" id="selectAllBottom"></div>
+                        <span>ทั้งหมด</span>
+                    </div>
+                    <div class="checkout-summary">
+                        <div class="total-text">รวม:</div>
+                        <div class="total-amount" id="checkoutTotal">฿0</div>
+                        <div class="saved-amount" id="savedAmount">ประหยัด ฿0</div>
+                    </div>
+                </div>
+                <button class="checkout-button" id="checkoutBtn">
+                    ชำระเงิน
+                    <span class="item-count" id="checkoutItemCount">(0)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bottom Spacer for Nav -->
+        <div class="bottom-spacer"></div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="../home/index.html" class="nav-item" data-nav="home">
+                <div class="nav-icon">🏠</div>
+                <span class="nav-label">หน้าแรก</span>
+            </a>
+            <a href="../Product/listing/product-listing.html" class="nav-item" data-nav="categories">
+                <div class="nav-icon">📂</div>
+                <span class="nav-label">หมวดหมู่</span>
+            </a>
+            <a href="../member/dashboard/member-dashboard.html" class="nav-item" data-nav="member">
+                <div class="nav-icon">👤</div>
+                <span class="nav-label">สมาชิก</span>
+            </a>
+            <a href="../member/profile/user-profile.html" class="nav-item" data-nav="account">
+                <div class="nav-icon">⚙️</div>
+                <span class="nav-label">บัญชี</span>
+            </a>
+        </nav>
+        
+        <!-- Coupon Modal -->
+        <div class="modal-overlay" id="couponModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">โค้ดส่วนลด</h3>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="coupon-input-section">
+                        <label class="form-label">ใส่โค้ดส่วนลด</label>
+                        <div class="coupon-input-group">
+                            <input type="text" class="coupon-input" placeholder="ใส่โค้ด..." id="couponInput">
+                            <button class="apply-coupon-btn">ใช้</button>
+                        </div>
+                    </div>
+                    
+                    <div class="available-coupons">
+                        <h4 class="section-title">คูปองที่มีอยู่</h4>
+                        <div class="coupon-list" id="couponList">
+                            <!-- Available coupons will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Points Modal -->
+        <div class="modal-overlay" id="pointsModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">ใช้แต้มสะสม</h3>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <div class="points-info">
+                        <div class="points-balance">
+                            <span class="points-label">แต้มที่มีอยู่:</span>
+                            <span class="points-value" id="totalPoints">1,250 แต้ม</span>
+                        </div>
+                        <div class="points-rate">1 แต้ม = 1 บาท</div>
+                    </div>
+                    
+                    <div class="points-input-section">
+                        <label class="form-label">จำนวนแต้มที่ต้องการใช้</label>
+                        <div class="points-input-group">
+                            <input type="number" class="points-input" placeholder="0" id="pointsInput" min="0">
+                            <button class="use-all-points-btn">ใช้ทั้งหมด</button>
+                        </div>
+                        <div class="points-slider-container">
+                            <input type="range" class="points-slider" min="0" max="1250" value="0" id="pointsSlider">
+                        </div>
+                    </div>
+                    
+                    <div class="points-preview">
+                        <div class="preview-row">
+                            <span>แต้มที่ใช้:</span>
+                            <span id="usedPointsPreview">0 แต้ม</span>
+                        </div>
+                        <div class="preview-row">
+                            <span>ส่วนลด:</span>
+                            <span id="pointsDiscountPreview">฿0</span>
+                        </div>
+                        <div class="preview-row">
+                            <span>แต้มคงเหลือ:</span>
+                            <span id="remainingPointsPreview">1,250 แต้ม</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-cancel">ยกเลิก</button>
+                    <button class="modal-apply">ใช้แต้ม</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Delete Confirmation Modal -->
+        <div class="modal-overlay" id="deleteModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">ยืนยันการลบ</h3>
+                </div>
+                <div class="modal-body">
+                    <p>คุณต้องการลบสินค้านี้ออกจากตะกร้าใช่หรือไม่?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-cancel">ยกเลิก</button>
+                    <button class="modal-delete">ลบ</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Clear Cart Confirmation Modal -->
+        <div class="modal-overlay" id="clearCartModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">ยืนยันการล้างตะกร้า</h3>
+                    <button class="modal-close">✕</button>
+                </div>
+                <div class="modal-body">
+                    <p>คุณแน่ใจหรือไม่ว่าต้องการลบสินค้าทั้งหมดออกจากตะกร้า?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="modal-cancel">ยกเลิก</button>
+                    <button class="modal-delete" id="confirmClearCartBtn">ล้างทั้งหมด</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Toast Notification -->
+        <div class="toast" id="toast">
+            <div class="toast-content">
+                <span class="toast-icon" id="toastIcon">✅</span>
+                <span class="toast-message" id="toastMessage">ดำเนินการสำเร็จ</span>
+            </div>
+        </div>
+    </div>
+    
+    <script src="cart.js"></script>
+</body>
+</html>

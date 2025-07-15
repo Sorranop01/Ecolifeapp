@@ -1,0 +1,376 @@
+/* ==========================================
+   Feedback Page Stylesheet
+   - สไตล์สำหรับหน้าให้คะแนน (Feedback) โดยเฉพาะ
+   ========================================== */
+
+/* ใช้ฟอนต์ Sarabun และค่าสีจากไฟล์ common.css */
+body {
+    font-family: 'Sarabun', sans-serif;
+    background-color: #f8fafb; /* หรือ var(--background-secondary) จาก common.css */
+    color: #1f2937; /* หรือ var(--text-primary) */
+    line-height: 1.6;
+}
+
+/* Container for the feedback page */
+.feedback-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: white; /* หรือ var(--background-primary) */
+    min-height: 100vh;
+}
+
+/* Header */
+.feedback-header {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%); /* หรือใช้ var(--primary-500) และ var(--primary-600) */
+    color: white; /* หรือ var(--text-inverse) */
+    padding: 20px;
+    text-align: center;
+    position: relative; /* สำหรับจัดวาง back-button */
+}
+
+.back-button {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+}
+
+.back-button:active {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Progress Bar */
+.progress-bar {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    margin-top: 16px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: white;
+    width: 25%; /* Initial width */
+    transition: width 0.3s ease;
+    border-radius: 2px;
+}
+
+/* Common Step Styling */
+.overall-rating, .category-ratings, .detailed-feedback, .thank-you {
+    padding: 24px;
+}
+
+/* Step 1: Overall Rating */
+.order-info {
+    background: #f3f4f6; /* หรือ var(--background-secondary) */
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.order-number {
+    font-size: 14px;
+    color: #6b7280; /* หรือ var(--text-secondary) */
+}
+
+.order-items {
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.rating-prompt {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Star Rating */
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.star {
+    font-size: 48px;
+    color: #e5e7eb; /* หรือ var(--border-light) */
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.star:hover,
+.star.active {
+    color: #fbbf24; /* หรือ var(--warning) */
+    transform: scale(1.1);
+}
+
+/* Emoji Reactions */
+.emoji-reactions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.emoji-btn {
+    width: 64px;
+    height: 64px;
+    border: 2px solid #e5e7eb; /* หรือ var(--border-light) */
+    background: white;
+    border-radius: 50%;
+    font-size: 32px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.emoji-btn:hover {
+    border-color: #22c55e; /* หรือ var(--primary-500) */
+    transform: scale(1.1);
+}
+
+.emoji-btn.selected {
+    border-color: #22c55e;
+    background: #f0fdf4; /* หรือ var(--primary-50) */
+}
+
+/* Buttons (Overrides for this page) */
+.feedback-container .btn-primary {
+    background: #22c55e;
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.feedback-container .btn-primary:active {
+    background: #16a34a; /* หรือ var(--primary-dark) */
+    transform: scale(0.98);
+}
+
+.feedback-container .btn-secondary {
+    background: transparent;
+    color: #6b7280;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 12px;
+    width: 100%;
+}
+
+/* Step 2: Category Ratings */
+.category-ratings {
+    display: none;
+}
+
+.category-item {
+    background: #f8fafb;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 16px;
+    border: 1px solid #e5e7eb;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.category-icon {
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.category-title {
+    font-weight: 600;
+    font-size: 16px;
+}
+
+/* Mini Star Rating */
+.mini-stars {
+    display: flex;
+    gap: 4px;
+}
+
+.mini-star {
+    font-size: 28px;
+    color: #e5e7eb;
+    cursor: pointer;
+}
+
+.mini-star.active {
+    color: #fbbf24;
+}
+
+/* Quick Feedback Tags */
+.quick-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tag {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.tag:hover {
+    border-color: #22c55e;
+}
+
+.tag.selected {
+    background: #22c55e;
+    color: white;
+    border-color: #22c55e;
+}
+
+/* Step 3: Detailed Feedback */
+.detailed-feedback {
+    display: none;
+}
+
+.feedback-section {
+    margin-bottom: 24px;
+}
+
+.section-title {
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: #22c55e;
+}
+
+/* Photo Upload */
+.photo-upload {
+    border: 2px dashed #e5e7eb;
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.photo-upload:hover {
+    border-color: #22c55e;
+    background: #f8fafb;
+}
+
+.upload-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    color: #6b7280;
+}
+
+/* Step 4: Thank You */
+.thank-you {
+    display: none;
+    text-align: center;
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: #f0fdf4;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 40px;
+    color: #22c55e;
+}
+
+.points-earned {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 12px 24px;
+    border-radius: 24px;
+    display: inline-block;
+    font-weight: 600;
+    margin: 16px 0;
+}
+
+/* Skip Link */
+.skip-link {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.skip-link:hover {
+    text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-30px); }
+    60% { transform: translateY(-15px); }
+}
+
+.bounce {
+    animation: bounce 1s ease;
+}

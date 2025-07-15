@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คูปองของฉัน | EcoLife - Health Food Store</title>
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="my-coupons.css">
+    
+    <!-- Meta tags for PWA -->
+    <meta name="theme-color" content="#22c55e">
+    <meta name="description" content="จัดการคูปองส่วนลดและโปรโมชั่นสำหรับอาหารเพื่อสุขภาพ">
+</head>
+<body>
+    <div class="container">
+        <div class="content-wrapper">
+            <!-- Header -->
+            <header class="header">
+                <button class="btn-back" id="backButton" aria-label="กลับหน้าก่อน">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/>
+                    </svg>
+                </button>
+                <h1 class="header-title">คูปองของฉัน</h1>
+                <button class="btn-menu" id="menuButton" aria-label="เมนูคูปอง">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+                    </svg>
+                </button>
+            </header>
+            
+            <!-- Summary Section -->
+            <section class="summary-section">
+                <div class="coupon-summary-card">
+                    <div class="summary-content">
+                        <div class="summary-info">
+                            <h2 class="summary-title">คูปองที่ใช้งานได้</h2>
+                            <div class="summary-value">
+                                <span class="value-number" id="availableCouponsCount">0</span>
+                                <span class="value-unit">ใบ</span>
+                            </div>
+                            <p class="summary-subtitle">ประหยัดไปกับอาหารเพื่อสุขภาพ</p>
+                        </div>
+                        <div class="summary-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm-1 14H5c-.55 0-1-.45-1-1V8c0-.55.45-1 1-1h14c.55 0 1 .45 1 1v9c0 .55-.45 1-1 1z"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="summary-actions">
+                        <button class="btn btn-secondary btn-sm" id="discoverCouponsButton">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                            ค้นหาคูปองใหม่
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Filter Tabs -->
+            <section class="filter-section">
+                <div class="filter-tabs" id="filterTabs" role="tablist">
+                    <button class="filter-tab active" 
+                            data-filter="available" 
+                            role="tab"
+                            aria-selected="true"
+                            aria-controls="available-panel">
+                        <span class="tab-text">ใช้งานได้</span>
+                        <span class="tab-badge" data-count-for="available">0</span>
+                    </button>
+                    <button class="filter-tab" 
+                            data-filter="used" 
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="used-panel">
+                        <span class="tab-text">ใช้แล้ว</span>
+                        <span class="tab-badge" data-count-for="used">0</span>
+                    </button>
+                    <button class="filter-tab" 
+                            data-filter="expired" 
+                            role="tab"
+                            aria-selected="false"
+                            aria-controls="expired-panel">
+                        <span class="tab-text">หมดอายุ</span>
+                        <span class="tab-badge" data-count-for="expired">0</span>
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Coupons Content -->
+            <main class="coupons-section">
+                <div class="coupons-container" id="couponsContainer" role="tabpanel">
+                    
+                    <!-- Loading State -->
+                    <div class="loading-state hidden" id="loadingState">
+                        <div class="skeleton coupon-skeleton"></div>
+                        <div class="skeleton coupon-skeleton"></div>
+                        <div class="skeleton coupon-skeleton"></div>
+                    </div>
+                    
+                    <!-- Available Coupons -->
+                    <div class="coupons-grid" id="couponsGrid"></div>
+                    
+                    <!-- Empty State -->
+                    <div class="empty-state hidden" id="emptyState">
+                        <div class="empty-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                            </svg>
+                        </div>
+                        <h3 class="empty-title">ไม่มีคูปองในหมวดนี้</h3>
+                        <p class="empty-subtitle">มาค้นหาคูปองใหม่กันเถอะ!</p>
+                        <button class="btn btn-primary" id="discoverCouponsEmptyButton">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                            </svg>
+                            ค้นหาคูปองใหม่
+                        </button>
+                    </div>
+                    
+                </div>
+            </main>
+        </div>
+        
+        <!-- Floating Action Button -->
+        <button class="fab" id="fabButton" aria-label="ดูคูปองด่วน">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+        </button>
+    </div>
+    
+    <!-- Success Modal -->
+    <div class="modal hidden" id="successModal">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="success-icon">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+                <h3>ใช้คูปองสำเร็จ!</h3>
+            </div>
+            <div class="modal-body">
+                <p id="successMessage">คูปองของคุณพร้อมใช้งานแล้ว</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="goToShoppingButton">ไปช็อปเลย</button>
+                <button class="btn btn-ghost" id="closeModalButton">ปิด</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Coupon Card Template -->
+    <template id="couponCardTemplate">
+        <article class="coupon-card" data-coupon-id="">
+            <div class="coupon-header">
+                <div class="coupon-type">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" data-coupon-svg="typeIcon"></svg>
+                    <span data-coupon-text="type"></span>
+                </div>
+                <div class="coupon-value">
+                    <span class="value-main" data-coupon-text="valueMain"></span>
+                    <span class="value-desc" data-coupon-text="valueDesc"></span>
+                </div>
+                <div class="coupon-label" data-coupon-text="label"></div>
+            </div>
+            <div class="coupon-body">
+                <div class="coupon-conditions" data-coupon-container="conditions">
+                    <!-- Condition tags will be inserted here -->
+                </div>
+                <div class="coupon-expiry">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/>
+                        <path d="M12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                    <span data-coupon-text="expiry"></span>
+                </div>
+                <div class="coupon-actions">
+                    <button class="btn btn-primary" data-coupon-action="use">ใช้คูปอง</button>
+                    <button class="btn-share" aria-label="แชร์คูปอง" data-coupon-action="share">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="status-badge hidden"></div>
+        </article>
+    </template>
+
+    <!-- JavaScript -->
+    <script src="my-coupons.js"></script>
+</body>
+</html>

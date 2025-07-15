@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - แลกของรางวัล</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="rewards-catalog.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">แลกของรางวัล</h1>
+        </header>
+
+        <!-- Points Summary -->
+        <section class="points-summary">
+            <div class="points-icon">🪙</div>
+            <div class="points-info">
+                <p>แต้มของคุณ</p>
+                <h2 id="currentPoints">15,750</h2>
+            </div>
+            <a href="points-history.html" class="history-link">ดูประวัติ →</a>
+        </section>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs" id="filterTabs">
+            <button class="filter-chip active" data-filter="all">ทั้งหมด</button>
+            <button class="filter-chip" data-filter="voucher">คูปอง</button>
+            <button class="filter-chip" data-filter="product">สินค้า</button>
+            <button class="filter-chip" data-filter="special">พิเศษ</button>
+        </div>
+
+        <!-- Rewards Grid -->
+        <main class="rewards-grid" id="rewardsGrid">
+            <!-- Reward items will be populated by JS -->
+        </main>
+
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState" style="display: none;">
+            <div class="empty-icon">🎁</div>
+            <p>ไม่พบของรางวัลในหมวดหมู่นี้</p>
+        </div>
+    </div>
+
+    <!-- Redemption Confirmation Modal -->
+    <div class="modal-overlay" id="redeemModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">ยืนยันการแลกของรางวัล</h3>
+                <button class="modal-close">✕</button>
+            </div>
+            <div class="modal-body" id="redeemModalBody">
+                <!-- Content will be populated by JS -->
+            </div>
+            <div class="modal-footer">
+                <button class="modal-cancel">ยกเลิก</button>
+                <button class="modal-confirm">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✅</span>
+            <span class="toast-message" id="toastMessage">ดำเนินการสำเร็จ</span>
+        </div>
+    </div>
+
+    <script src="rewards-catalog.js"></script>
+</body>
+</html>

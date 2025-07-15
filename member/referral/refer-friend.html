@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ชวนเพื่อน</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="refer-friend.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">ชวนเพื่อน</h1>
+        </header>
+
+        <main class="content">
+            <section class="hero-section">
+                <div class="hero-icon">🎁</div>
+                <h2 class="hero-title">ชวนเพื่อนรับเลย!</h2>
+                <p class="hero-subtitle">เพื่อนรับส่วนลด <span class="highlight">100 บาท</span><br>คุณรับ <span class="highlight">100 แต้ม</span> เมื่อเพื่อนสั่งซื้อครั้งแรก</p>
+            </section>
+
+            <section class="referral-code-section">
+                <h3>รหัสแนะนำของคุณ</h3>
+                <div class="code-box">
+                    <span id="referralCode">ECO-SOMSRI123</span>
+                    <button id="copyCodeBtn">คัดลอก</button>
+                </div>
+            </section>
+
+            <section class="share-section">
+                <h3>หรือแชร์ลิงก์ให้เพื่อน</h3>
+                <div class="share-buttons">
+                    <button class="share-btn line"><span>💬</span> LINE</button>
+                    <button class="share-btn facebook"><span>📘</span> Facebook</button>
+                    <button class="share-btn more"><span>🔗</span> อื่นๆ</button>
+                </div>
+            </section>
+
+            <section class="history-section">
+                <h3>ประวัติการชวนเพื่อน (2)</h3>
+                <div class="history-list" id="historyList">
+                    <!-- History items will be populated by JS -->
+                </div>
+                <button class="view-more-button">ดูทั้งหมด</button>
+            </section>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✅</span>
+            <span class="toast-message" id="toastMessage">ดำเนินการสำเร็จ</span>
+        </div>
+    </div>
+
+    <script src="refer-friend.js"></script>
+</body>
+</html>

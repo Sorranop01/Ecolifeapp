@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ข้าวกล่องคลีน ไก่ย่างสมุนไพร | Brand A</title>
+    <link rel="stylesheet" href="product-detail.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-nav">
+                <button class="nav-button" id="back-btn">←</button>
+                <div class="header-actions">
+                    <button class="nav-button" id="share-btn">🔗</button>
+                    <button class="nav-button cart-badge" id="cart-btn">
+                        🛒
+                        <span class="badge" id="cart-count">3</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Product Images -->
+        <div class="product-images" id="product-images">
+            <div class="product-badges">
+                <div class="badge-item">จัดส่งฟรี</div>
+                <div class="badge-item discount-badge">-20%</div>
+            </div>
+            <div class="image-carousel" id="image-carousel">
+                <div class="product-image">
+                    <div class="image-placeholder">🍱</div>
+                </div>
+                <div class="product-image">
+                    <div class="image-placeholder">🥗</div>
+                </div>
+                <div class="product-image">
+                    <div class="image-placeholder">🍗</div>
+                </div>
+            </div>
+            <div class="image-indicators" id="image-indicators">
+                <div class="indicator active" data-index="0"></div>
+                <div class="indicator" data-index="1"></div>
+                <div class="indicator" data-index="2"></div>
+            </div>
+            <button class="image-nav-btn prev-btn" id="prev-btn">‹</button>
+            <button class="image-nav-btn next-btn" id="next-btn">›</button>
+        </div>
+        
+        <!-- Product Info -->
+        <div class="product-info">
+            <span class="brand-tag">Brand A</span>
+            <h1 class="product-title">ข้าวกล่องคลีน ไก่ย่างสมุนไพร พร้อมผักสด</h1>
+            
+            <div class="rating-section">
+                <div class="rating">
+                    <span class="stars">⭐⭐⭐⭐⭐</span>
+                    <span class="rating-text">4.8</span>
+                </div>
+                <span class="reviews-count" id="reviews-count">(234 รีวิว)</span>
+                <span class="sold-count">ขายแล้ว 1.2k</span>
+            </div>
+            
+            <!-- Price Section -->
+            <div class="price-section">
+                <div class="price-row">
+                    <span class="current-price" id="current-price">฿89</span>
+                    <span class="original-price" id="original-price">฿109</span>
+                    <span class="discount-percentage">-20%</span>
+                </div>
+                <div class="points-earn">
+                    <span class="points-icon"></span>
+                    <span id="points-text">รับ 89 แต้มสะสม</span>
+                </div>
+            </div>
+            
+            <!-- Health Tags -->
+            <div class="health-tags">
+                <span class="health-tag">ต่ำแคลอรี่ 320 kcal</span>
+                <span class="health-tag">โปรตีนสูง 35g</span>
+                <span class="health-tag">ไขมันต่ำ</span>
+                <span class="health-tag">ลดน้ำหนัก</span>
+            </div>
+            
+            <!-- Nutrition Info -->
+            <div class="nutrition-card">
+                <h3 class="nutrition-title">คุณค่าทางโภชนาการ</h3>
+                <div class="nutrition-grid">
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">320</div>
+                        <div class="nutrition-label">แคลอรี่</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">35g</div>
+                        <div class="nutrition-label">โปรตีน</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">28g</div>
+                        <div class="nutrition-label">คาร์บ</div>
+                    </div>
+                    <div class="nutrition-item">
+                        <div class="nutrition-value">8g</div>
+                        <div class="nutrition-label">ไขมัน</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Description -->
+            <div class="section">
+                <h3 class="section-title">รายละเอียดสินค้า</h3>
+                <p class="description-text">
+                    ข้าวกล่องคลีนสูตรพิเศษ อกไก่ย่างหมักสมุนไพรไทย 13 ชนิด ย่างจนหอมกรอบนอกนุ่มใน 
+                    เสิร์ฟพร้อมข้าวกล้องหอมมะลิ และผักสดออร์แกนิค 5 สี ปรุงรสด้วยน้ำสลัดสูตรพิเศษ 
+                    ไม่ใส่น้ำตาล MSG และสารกันบูด เหมาะสำหรับผู้ที่ต้องการควบคุมน้ำหนักและรักสุขภาพ
+                </p>
+                <button class="expand-description" id="expand-desc">อ่านเพิ่มเติม</button>
+            </div>
+            
+            <!-- Reviews Section -->
+            <div class="section">
+                <div class="section-header">
+                    <h3 class="section-title">รีวิวจากลูกค้า</h3>
+                    <button class="see-all-reviews" id="see-all-reviews">ดูทั้งหมด →</button>
+                </div>
+                <div class="reviews-list" id="reviews-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">👤</div>
+                                <div class="reviewer-name">สมชาย ใจดี</div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">อร่อยมาก ไก่นุ่ม ข้าวหอม ผักสดใหม่ ส่งไวด้วย แนะนำเลย!</div>
+                        <div class="review-date">3 วันที่แล้ว</div>
+                    </div>
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">👩</div>
+                                <div class="reviewer-name">สุดา รักสุขภาพ</div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <div class="review-text">คลีนจริงๆ แคลอรี่ต่ำ เหมาะกับคนลดน้ำหนัก รสชาติดีด้วย</div>
+                        <div class="review-date">1 สัปดาห์ที่แล้ว</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Related Products -->
+            <div class="related-products">
+                <h3 class="section-title">สินค้าที่คล้ายกัน</h3>
+                <div class="products-scroll">
+                    <div class="related-product-card" data-product-id="2">
+                        <div class="related-product-image">
+                            <div class="image-placeholder">🐟</div>
+                        </div>
+                        <div class="related-product-info">
+                            <div class="related-product-name">ข้าวกล่องปลาแซลมอน</div>
+                            <div class="related-product-price">฿129</div>
+                        </div>
+                    </div>
+                    <div class="related-product-card" data-product-id="3">
+                        <div class="related-product-image">
+                            <div class="image-placeholder">🥗</div>
+                        </div>
+                        <div class="related-product-info">
+                            <div class="related-product-name">สลัดอกไก่ย่าง</div>
+                            <div class="related-product-price">฿99</div>
+                        </div>
+                    </div>
+                    <div class="related-product-card" data-product-id="4">
+                        <div class="related-product-image">
+                            <div class="image-placeholder">🍚</div>
+                        </div>
+                        <div class="related-product-info">
+                            <div class="related-product-name">ข้าวผัดกระเพราไก่</div>
+                            <div class="related-product-price">฿79</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Action Bar -->
+        <div class="bottom-action-bar">
+            <button class="favorite-button" id="favorite-btn">♡</button>
+            <div class="quantity-selector">
+                <button class="qty-button" id="qty-minus">-</button>
+                <span class="qty-value" id="qty-value">1</span>
+                <button class="qty-button" id="qty-plus">+</button>
+            </div>
+            <button class="add-to-cart-button" id="add-to-cart-btn">
+                <span>เพิ่มลงตะกร้า</span>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Share Modal -->
+    <div class="modal-overlay" id="share-modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>แชร์สินค้า</h3>
+                <button class="close-btn" id="close-share-modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <div class="share-option" data-platform="line">
+                        <div class="share-icon">💬</div>
+                        <span>LINE</span>
+                    </div>
+                    <div class="share-option" data-platform="facebook">
+                        <div class="share-icon">📘</div>
+                        <span>Facebook</span>
+                    </div>
+                    <div class="share-option" data-platform="twitter">
+                        <div class="share-icon">🐦</div>
+                        <span>Twitter</span>
+                    </div>
+                    <div class="share-option" data-platform="copy">
+                        <div class="share-icon">📋</div>
+                        <span>คัดลอกลิงก์</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Image Zoom Modal -->
+    <div class="modal-overlay" id="image-zoom-modal" style="display: none;">
+        <div class="zoom-modal-content">
+            <button class="close-btn" id="close-zoom-modal">×</button>
+            <div class="zoom-image-container" id="zoom-image-container">
+                <div class="zoom-image">🍱</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>กำลังโหลด...</p>
+        </div>
+    </div>
+    
+    <!-- Success Message -->
+    <div class="success-message" id="success-message" style="display: none;">
+        <div class="success-content">
+            <span class="success-icon">✅</span>
+            <span class="success-text">เพิ่มลงตะกร้าสำเร็จ!</span>
+        </div>
+    </div>
+    
+    <!-- Toast Notification -->
+    <div class="toast-notification" id="toast-notification" style="display: none;">
+        <div class="toast-content">
+            <span class="toast-icon">ℹ️</span>
+            <span class="toast-text">ข้อความแจ้งเตือน</span>
+        </div>
+    </div>
+
+    <script src="product-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ชำระเงินด้วยบัตรเครดิต</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="payment-card.css">
+    <!-- 1. เพิ่ม Script ของ Omise.js -->
+    <script src="https://cdn.omise.co/omise.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">ชำระเงินด้วยบัตรเครดิต</h1>
+        </header>
+
+        <main class="payment-content">
+            <!-- Credit Card Visual -->
+            <div class="credit-card-visual">
+                <div class="card-chip"></div>
+                <div class="card-logo" id="cardLogo"></div>
+                <div class="card-number" id="visualCardNumber">•••• •••• •••• ••••</div>
+                <div class="card-holder-name" id="visualCardName">ชื่อ-นามสกุล</div>
+                <div class="card-expiry" id="visualCardExpiry">MM/YY</div>
+            </div>
+
+            <!-- Payment Form -->
+            <form class="payment-form" id="paymentForm">
+                <div class="form-group">
+                    <label for="cardNumber">หมายเลขบัตร</label>
+                    <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                </div>
+                <div class="form-group">
+                    <label for="cardName">ชื่อบนบัตร</label>
+                    <input type="text" id="cardName" placeholder="ชื่อ-นามสกุล" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="cardExpiry">วันหมดอายุ (MM/YY)</label>
+                        <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardCvv">CVV</label>
+                        <input type="text" id="cardCvv" placeholder="123" maxlength="3" required>
+                    </div>
+                </div>
+                <div class="form-group save-card">
+                    <input type="checkbox" id="saveCard" checked>
+                    <label for="saveCard">บันทึกบัตรนี้ไว้ใช้ครั้งต่อไป</label>
+                </div>
+            </form>
+        </main>
+
+        <footer class="bottom-action-bar">
+            <div class="total-summary">
+                <span class="total-label">ยอดที่ต้องชำระ:</span>
+                <span class="total-price" id="finalPrice">฿0.00</span>
+            </div>
+            <button class="place-order-button" id="payBtn">ชำระเงิน</button>
+        </footer>
+    </div>
+    <script src="payment-card.js"></script>
+</body>
+</html>

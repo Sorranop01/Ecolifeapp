@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - สั่งซื้อสำเร็จ</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="order-success.css">
+</head>
+<body>
+    <div class="container">
+        <div class="success-card">
+            <div class="success-icon">✅</div>
+            <h1 class="success-title">สั่งซื้อสำเร็จ!</h1>
+            <p class="success-subtitle">เราได้รับคำสั่งซื้อของคุณแล้ว<br>และกำลังดำเนินการจัดส่ง</p>
+
+            <div class="order-id-box">
+                <div class="order-id-label">หมายเลขคำสั่งซื้อ</div>
+                <div class="order-id-value" id="orderIdDisplay">#ECO...</div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-primary" id="trackOrderBtn">ติดตามสถานะ</button>
+                <button class="btn btn-secondary" id="requestTaxInvoiceBtn">ขอใบกำกับภาษี</button>
+                <button class="btn btn-outline" id="backToHomeBtn">กลับสู่หน้าแรก</button>
+            </div>
+        </div>
+    </div>
+    <script src="order-success.js"></script>
+</body>
+</html>

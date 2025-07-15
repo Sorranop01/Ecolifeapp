@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ให้คะแนนสินค้า</title>
+    <link rel="stylesheet" href="common.css">
+    <link rel="stylesheet" href="rate-order.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">ให้คะแนนและรีวิว</h1>
+        </header>
+
+        <main class="rating-content">
+            <div class="order-info-header">
+                <p>คำสั่งซื้อ <strong id="orderId">#ECO123456</strong></p>
+                <p id="orderDate">5 ก.ค. 2567</p>
+            </div>
+
+            <div class="rating-items-container" id="ratingItemsContainer">
+                <!-- Rating items will be populated by JS -->
+            </div>
+        </main>
+
+        <footer class="bottom-action-bar">
+            <button class="submit-button" id="submitReviewBtn">ส่งรีวิวทั้งหมด</button>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✅</span>
+            <span class="toast-message" id="toastMessage">ดำเนินการสำเร็จ</span>
+        </div>
+    </div>
+
+    <script src="rate-order.js"></script>
+</body>
+</html>

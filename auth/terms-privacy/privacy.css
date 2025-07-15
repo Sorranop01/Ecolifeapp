@@ -1,0 +1,100 @@
+/* ==========================================
+   EcoLife Privacy Policy Stylesheet
+   ========================================== */
+
+body {
+    background-color: var(--background-primary);
+}
+
+.container {
+    background-color: var(--background-primary);
+    min-height: 100vh;
+}
+
+.privacy-header {
+    padding: var(--space-lg) var(--space-md);
+    text-align: center;
+    border-bottom: 1px solid var(--border-light);
+    background-color: var(--background-primary);
+    position: sticky;
+    top: 0;
+    z-index: var(--z-sticky);
+}
+
+.privacy-header h1 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+}
+
+.privacy-content {
+    padding: var(--space-md) var(--space-lg) var(--space-4xl);
+}
+
+.privacy-content .last-updated {
+    font-size: var(--text-sm);
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+.privacy-content section {
+    margin-bottom: var(--space-xl);
+}
+
+.privacy-content h2 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+    color: var(--primary-dark);
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-xs);
+    border-bottom: 2px solid var(--primary-100);
+}
+
+.privacy-content p, .privacy-content ul {
+    font-size: var(--text-base);
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--space-md);
+}
+
+.privacy-content ul {
+    padding-left: var(--space-xl);
+}
+
+.privacy-content ul ul {
+    margin-top: var(--space-sm);
+    margin-bottom: 0;
+}
+
+.privacy-content li {
+    margin-bottom: var(--space-sm);
+}
+
+.privacy-content strong {
+    font-weight: var(--font-semibold);
+    color: var(--text-primary);
+}
+
+.privacy-footer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    padding: var(--space-md) var(--space-lg);
+    background: linear-gradient(to top, rgba(255, 255, 255, 1) 70%, rgba(255, 255, 255, 0));
+    z-index: var(--z-fixed);
+    display: flex;
+    justify-content: center;
+}
+
+.privacy-footer .btn {
+    width: 100%;
+    max-width: 380px;
+}
+
+.bottom-spacer {
+    height: 120px;
+}

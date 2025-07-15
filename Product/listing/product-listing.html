@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - อาหารคลีน | รายการสินค้า</title>
+    <link rel="stylesheet" href="product-listing.css">
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-nav">
+                <button class="back-button" id="back-btn">←</button>
+                <h1 class="header-title" id="page-title">อาหารคลีน</h1>
+                <button class="icon-btn" id="search-btn">
+                    <span style="font-size: 20px;">🔍</span>
+                </button>
+                <button class="icon-btn cart-badge" id="cart-btn">
+                    <span style="font-size: 20px;">🛒</span>
+                    <span class="badge" id="cart-count">3</span>
+                </button>
+            </div>
+        </header>
+        
+        <!-- Filter Bar -->
+        <div class="filter-bar" id="filter-bar">
+            <div class="filter-chip active" data-filter="all">
+                <span>ทั้งหมด</span>
+            </div>
+            <div class="filter-chip" data-filter="brand-a">
+                <span>Brand A</span>
+                <span class="filter-count">24</span>
+            </div>
+            <div class="filter-chip" data-filter="brand-b">
+                <span>Brand B</span>
+                <span class="filter-count">18</span>
+            </div>
+            <div class="filter-chip" data-filter="brand-c">
+                <span>Brand C</span>
+                <span class="filter-count">32</span>
+            </div>
+            <div class="filter-chip" data-filter="price-under-100">
+                <span>ต่ำกว่า 100 บาท</span>
+            </div>
+            <div class="filter-chip" data-filter="weight-loss">
+                <span>ลดน้ำหนัก</span>
+            </div>
+        </div>
+        
+        <!-- Sort Bar -->
+        <div class="sort-bar">
+            <span class="results-count" id="results-count">พบ 74 รายการ</span>
+            <button class="sort-button" id="sort-btn">
+                <span id="sort-text">เรียงตาม: ยอดนิยม</span>
+                <span>▼</span>
+            </button>
+        </div>
+        
+        <!-- Products Grid -->
+        <div class="products-grid" id="products-grid">
+            <!-- Products will be dynamically inserted here by JavaScript -->
+        </div>
+        
+        <!-- Load More -->
+        <div class="load-more">
+            <button class="load-more-btn" id="load-more-btn">ดูเพิ่มเติม</button>
+        </div>
+        
+        <!-- Floating Filter Button -->
+        <button class="floating-filter" id="floating-filter-btn">
+            <span class="filter-icon">⚙️</span>
+        </button>
+        
+        <!-- Sort Modal -->
+        <div class="modal-overlay" id="sort-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>เรียงตาม</h3>
+                    <button class="close-btn" id="close-sort-modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="sort-option active" data-sort="popular">
+                        <span>ยอดนิยม</span>
+                        <span class="check">✓</span>
+                    </div>
+                    <div class="sort-option" data-sort="price-low">
+                        <span>ราคาต่ำ → สูง</span>
+                    </div>
+                    <div class="sort-option" data-sort="price-high">
+                        <span>ราคาสูง → ต่ำ</span>
+                    </div>
+                    <div class="sort-option" data-sort="newest">
+                        <span>ใหม่ล่าสุด</span>
+                    </div>
+                    <div class="sort-option" data-sort="rating">
+                        <span>คะแนนรีวิว</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Advanced Filter Modal -->
+        <div class="modal-overlay" id="filter-modal" style="display: none;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>กรองสินค้า</h3>
+                    <button class="close-btn" id="close-filter-modal">×</button>
+                </div>
+                <div class="modal-body">
+                    <div class="filter-section">
+                        <h4>ช่วงราคา</h4>
+                        <div class="price-range">
+                            <input type="range" id="price-min" min="0" max="1000" value="0">
+                            <input type="range" id="price-max" min="0" max="1000" value="1000">
+                            <div class="price-values">
+                                <span id="price-min-value">฿0</span>
+                                <span id="price-max-value">฿1,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4>แบรนด์</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="brand-a" checked>
+                                <span>Brand A</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="brand-b" checked>
+                                <span>Brand B</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="brand-c" checked>
+                                <span>Brand C</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="filter-section">
+                        <h4>ประเภทอาหาร</h4>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="vegetarian">
+                                <span>มังสวิรัติ</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="keto">
+                                <span>คีโตเจนิค</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" value="gluten-free">
+                                <span>ปลอดกลูเตน</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="clear-btn" id="clear-filters">ล้างทั้งหมด</button>
+                    <button class="apply-btn" id="apply-filters">ใช้ตัวกรอง</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay" style="display: none;">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>กำลังโหลดสินค้า...</p>
+        </div>
+    </div>
+    
+    <!-- Success Message -->
+    <div class="success-message" id="success-message" style="display: none;">
+        <div class="success-content">
+            <span class="success-icon">✅</span>
+            <span class="success-text">เพิ่มลงตะกร้าสำเร็จ!</span>
+        </div>
+    </div>
+
+    <script src="product-listing.js"></script>
+</body>
+</html>

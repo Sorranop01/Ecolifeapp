@@ -1,0 +1,118 @@
+/* /Users/sorranopkhanonvech/Desktop/EcoLife/pages/member/tax-invoice/request-tax-invoice.css */
+body {
+    background-color: var(--background-secondary);
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    font-size: var(--text-lg);
+    font-weight: var(--font-semibold);
+}
+
+.icon-button {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: var(--background-secondary);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    padding: var(--space-lg);
+    padding-bottom: 100px; /* Space for the fixed footer */
+}
+
+.form-section {
+    background-color: var(--background-primary);
+    padding: var(--space-lg);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--space-md);
+}
+
+.form-group {
+    margin-bottom: var(--space-lg);
+}
+
+.form-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: var(--font-medium);
+    color: var(--text-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.form-control {
+    width: 100%;
+    padding: var(--space-md);
+    font-size: var(--text-md);
+    background-color: var(--background-primary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-md);
+    box-sizing: border-box;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+.radio-group {
+    display: flex;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    cursor: pointer;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    font-size: var(--text-sm);
+    color: var(--text-primary);
+    cursor: pointer;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 1.15em;
+    height: 1.15em;
+    accent-color: var(--primary-500);
+}
+
+.page-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: var(--background-primary);
+    padding: var(--space-md) var(--space-lg);
+    border-top: 1px solid var(--border-primary);
+}
+
+.submit-button {
+    width: 100%;
+}
+
+.order-info {
+    font-size: var(--text-sm);
+    color: var(--text-secondary);
+    text-align: center;
+    margin-bottom: var(--space-lg);
+    padding: var(--space-md);
+    background-color: var(--background-primary);
+    border-radius: var(--radius-md);
+}

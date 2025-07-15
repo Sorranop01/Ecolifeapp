@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ชำระเงิน</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <button class="back-button" id="backButton">←</button>
+                <h1 class="header-title">ชำระเงิน</h1>
+            </div>
+            
+            <!-- Progress Steps -->
+            <div class="progress-steps">
+                <div class="steps-container">
+                    <div class="progress-line">
+                        <div class="progress-line-fill" id="progressLineFill"></div>
+                    </div>
+                    <div class="step completed" data-step="1">
+                        <div class="step-number">✓</div>
+                        <span class="step-label">ตะกร้า</span>
+                    </div>
+                    <div class="step active" data-step="2">
+                        <div class="step-number">2</div>
+                        <span class="step-label">จัดส่ง</span>
+                    </div>
+                    <div class="step" data-step="3">
+                        <div class="step-number">3</div>
+                        <span class="step-label">ชำระเงิน</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Delivery Address Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-icon">📍</span>
+                    <span>ที่อยู่จัดส่ง</span>
+                </h2>
+                <a href="../member/manage-addresses/add-edit-address.html" class="edit-link" id="addAddressLink">เพิ่มที่อยู่</a>
+            </div>
+            
+            <div class="addresses-container" id="addressesContainer">
+                <!-- Address cards will be dynamically populated by checkout.js -->
+            </div>
+            
+            <button class="add-address-button" id="addAddressButton">
+                <span>+</span>
+                <span>เพิ่มที่อยู่ใหม่</span>
+            </button>
+        </div>
+        
+        <!-- Payment Method Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-icon">💳</span>
+                    <span>วิธีชำระเงิน</span>
+                </h2>
+            </div>
+            <div class="payment-options" id="paymentOptions">
+                <div class="payment-card selected" data-payment="card">
+                    <div class="payment-icon">💳</div>
+                    <div class="payment-info">
+                        <div class="payment-name">บัตรเครดิต/เดบิต</div>
+                        <div class="payment-description">Visa, Mastercard, JCB</div>
+                    </div>
+                    <div class="radio-button"></div>
+                </div>
+                
+                <div class="payment-card" data-payment="bank">
+                    <div class="payment-icon">🏦</div>
+                    <div class="payment-info">
+                        <div class="payment-name">โอนเงินผ่านธนาคาร</div>
+                        <div class="payment-description">รับ QR Code และเลขบัญชี</div>
+                    </div>
+                    <div class="radio-button"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Options Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-icon">⚙️</span>
+                    <span>ตัวเลือกเพิ่มเติม</span>
+                </h2>
+            </div>
+            <div class="options-container" id="additionalOptions">
+                <div class="option-row">
+                    <div class="option-label-group">
+                        <span class="option-icon">🍴</span>
+                        <label for="cutleryToggle" class="option-label-text">รับช้อน-ส้อมพลาสติก</label>
+                    </div>
+                    <div class="toggle-switch">
+                        <input type="checkbox" id="cutleryToggle" class="toggle-input" checked>
+                        <label for="cutleryToggle" class="toggle-label"></label>
+                    </div>
+                </div>
+                <div class="option-row column">
+                    <div class="option-label-group">
+                        <span class="option-icon">📝</span>
+                        <label for="deliveryNote" class="option-label-text">หมายเหตุถึงคนขับ</label>
+                    </div>
+                    <textarea id="deliveryNote" class="note-textarea" placeholder="เช่น ไม่ต้องโทร, วางไว้หน้าประตู"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Promo Code & Summary Section -->
+        <div class="section">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-icon">🎁</span>
+                    <span>สรุปคำสั่งซื้อ</span>
+                </h2>
+            </div>
+            
+            <!-- Order Summary -->
+            <div class="order-summary" id="orderSummary">
+                <div class="summary-row">
+                    <span class="summary-label">ราคาสินค้า (<span id="itemCount">5</span> ชิ้น)</span>
+                    <span class="summary-value" id="itemsTotal">฿434</span>
+                </div>
+                <div class="summary-row">
+                    <span class="summary-label">ส่วนลดสินค้า</span>
+                    <span class="summary-value discount-value" id="itemDiscount">-฿20</span>
+                </div>
+                <div class="summary-row" id="pointsDiscountRow" style="display: none;">
+                    <span class="summary-label">ส่วนลดจากแต้ม</span>
+                    <span class="summary-value discount-value" id="pointsDiscountDisplay">-฿0</span>
+                </div>
+                <div class="summary-divider"></div>
+                <div class="total-row">
+                    <span class="total-label">ยอดรวมทั้งสิ้น</span>
+                    <span class="total-value" id="finalTotal">฿414</span>
+                </div>
+                
+                <div class="points-earned">
+                    <span class="points-icon">🪙</span>
+                    <span class="points-text">คุณจะได้รับ <span class="points-amount" id="pointsEarned">414</span> แต้ม จากคำสั่งซื้อนี้</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Bottom Bar -->
+        <div class="bottom-bar">
+            <div class="bottom-content">
+                <div class="security-note">
+                    <span class="security-icon">🔒</span>
+                    <span>การชำระเงินของคุณมีความปลอดภัยด้วยระบบเข้ารหัส SSL</span>
+                </div>
+                <button class="checkout-button" id="checkoutButton">
+                    <span>ชำระเงิน</span>
+                    <span id="checkoutAmount">฿414</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Success Modal -->
+        <div class="success-modal" id="successModal">
+            <div class="success-content">
+                <div class="success-icon">✅</div>
+                <h3 class="success-title">ชำระเงินสำเร็จ!</h3>
+                <p class="success-message">
+                    คำสั่งซื้อของคุณถูกยืนยันแล้ว<br>
+                    คุณจะได้รับการแจ้งเตือนเมื่อเริ่มจัดส่ง
+                </p>
+                <div class="success-buttons">
+                    <button class="success-button primary" id="trackOrderButton">ติดตามสินค้า</button>
+                    <button class="success-button secondary" id="continueShopping">ช้อปต่อ</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Loading Overlay -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <div class="loading-text">กำลังประมวลผล...</div>
+        </div>
+    </div>
+    
+    <script src="checkout.js"></script>
+</body>
+</html>

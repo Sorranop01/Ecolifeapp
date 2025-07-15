@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - ให้คะแนนสินค้า</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="rate-order.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-nav">
+                <button class="icon-button" id="backButton">←</button>
+                <h1 class="header-title">ให้คะแนนสินค้า</h1>
+                <div style="width: 40px;"></div> <!-- Spacer -->
+            </div>
+        </header>
+        <main class="content" id="ratingContent">
+            <!-- Product rating cards will be populated here by JS -->
+            <div class="loading-placeholder">กำลังโหลดรายการสินค้า...</div>
+        </main>
+        <footer class="page-footer">
+            <button class="btn btn-primary" id="submitAllRatingsBtn">ส่งคะแนนทั้งหมด</button>
+        </footer>
+    </div>
+    <script src="rate-order.js"></script>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ตรวจสอบเขตพื้นที่การจัดส่ง | EcoLife</title>
+    
+    <!-- Common CSS -->
+    <link rel="stylesheet" href="../../styles/common.css">
+    
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="delivery-check.css">
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Container -->
+    <div class="delivery-container">
+        
+        <!-- Header Section -->
+        <header class="delivery-header fade-in">
+            <div class="header-icon bg-primary rounded-full shadow-lg">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                    <circle cx="12" cy="10" r="3"/>
+                </svg>
+            </div>
+            <h1 class="text-2xl font-semibold text-primary mb-sm">ตรวจสอบเขตพื้นที่การจัดส่ง</h1>
+            <p class="text-secondary text-base">ตรวจสอบว่าพื้นที่ของคุณอยู่ในเขตจัดส่งฟรีหรือไม่</p>
+        </header>
+
+        <!-- Main Input Card -->
+        <div class="card delivery-card fade-in">
+            <div class="card-body">
+                <!-- Method Selection Tabs -->
+                <div class="method-tabs mb-xl">
+                    <button class="method-tab active" data-method="location" role="tab" aria-selected="true">
+                        <span class="tab-icon">📍</span>
+                        <span class="tab-text">หาตำแหน่งอัตโนมัติ</span>
+                    </button>
+                    <button class="method-tab" data-method="manual" role="tab" aria-selected="false">
+                        <span class="tab-icon">✏️</span>
+                        <span class="tab-text">ใส่ที่อยู่เอง</span>
+                    </button>
+                </div>
+
+                <!-- Location Detection Panel -->
+                <div class="method-panel active" id="locationPanel" role="tabpanel">
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-lg detect-location-btn" type="button">
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="2"/>
+                                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                            </svg>
+                            <span>ตรวจหาตำแหน่งของฉัน</span>
+                        </button>
+                        <p class="text-sm text-muted mt-md">
+                            เราจะใช้ตำแหน่ง GPS ของคุณเพื่อตรวจสอบ<br>
+                            ข้อมูลตำแหน่งจะไม่ถูกเก็บไว้ในระบบ
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Manual Input Panel -->
+                <div class="method-panel" id="manualPanel" role="tabpanel">
+                    <form id="addressForm" novalidate>
+                        <div class="form-group">
+                            <label for="postalCode" class="form-label">รหัสไปรษณีย์</label>
+                            <input 
+                                type="text" 
+                                id="postalCode" 
+                                class="form-input" 
+                                placeholder="เช่น 10110" 
+                                maxlength="5"
+                                pattern="[0-9]{5}"
+                                inputmode="numeric"
+                                autocomplete="postal-code"
+                            >
+                            <span class="form-error" id="postalCodeError"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="address" class="form-label">หรือใส่ที่อยู่</label>
+                            <input 
+                                type="text" 
+                                id="address" 
+                                class="form-input" 
+                                placeholder="เช่น ซอย ถนน แขวง เขต จังหวัด"
+                                autocomplete="street-address"
+                                list="address-suggestions"
+                            >
+                            <datalist id="address-suggestions">
+                                <!-- จะถูก populate ด้วย JS -->
+                            </datalist>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg w-full">
+                            ตรวจสอบเขตพื้นที่
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-overlay" id="loadingOverlay" aria-hidden="true">
+            <div class="loading-content">
+                <div class="spinner"></div>
+                <p class="text-base mt-lg">กำลังตรวจสอบตำแหน่งของคุณ...</p>
+            </div>
+        </div>
+
+        <!-- Result Card Template -->
+        <div class="card result-card" id="resultCard" aria-live="polite">
+            <!-- จะถูก populate ด้วย JS -->
+        </div>
+
+        <!-- Footer Information -->
+        <footer class="footer-info card">
+            <div class="card-body">
+                <h3 class="footer-title flex items-center gap-sm mb-md">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+                        <line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    <span>ข้อมูลการจัดส่ง</span>
+                </h3>
+                <ul class="info-list">
+                    <li>จัดส่งฟรีในรัศมี 40 กม. จากจุดกระจายสินค้า</li>
+                    <li>นอกเขตคิดค่าจัดส่ง 50-150 บาท (ตามระยะทาง)</li>
+                    <li>สินค้าแช่เย็น/แช่แข็ง รักษาอุณหภูมิตลอดการขนส่ง</li>
+                    <li>จัดส่งทุกวัน เว้นวันอาทิตย์และวันหยุดนักขัตฤกษ์</li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Result Templates (Hidden) -->
+    <template id="resultSuccessTemplate">
+        <div class="result-header text-center">
+            <div class="result-icon success">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                </svg>
+            </div>
+            <h2 class="result-title success">อยู่ในเขตจัดส่งฟรี!</h2>
+            <p class="result-subtitle"></p>
+        </div>
+        
+        <div class="result-body">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-value text-success">ฟรี</div>
+                    <div class="info-label">ค่าจัดส่ง</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">1-2 ชม.</div>
+                    <div class="info-label">เวลาจัดส่ง</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">09:00-18:00</div>
+                    <div class="info-label">ช่วงเวลา</div>
+                </div>
+            </div>
+
+            <div class="zone-map">
+                <div class="zone-indicator success">
+                    <div class="pulse-ring"></div>
+                    <div class="location-pin"></div>
+                </div>
+                <div class="map-label">คุณอยู่ในเขตจัดส่งฟรี</div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/products" class="btn btn-primary btn-lg flex-1">
+                    <span>🛒</span>
+                    <span>เริ่มสั่งซื้อ</span>
+                </a>
+                <button type="button" class="btn btn-secondary btn-lg check-again-btn">
+                    <span>🔄</span>
+                    <span>ตรวจสอบใหม่</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <template id="resultWarningTemplate">
+        <div class="result-header text-center">
+            <div class="result-icon warning">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+                    <line x1="12" y1="9" x2="12" y2="13"/>
+                    <line x1="12" y1="17" x2="12.01" y2="17"/>
+                </svg>
+            </div>
+            <h2 class="result-title warning">นอกเขตจัดส่งฟรี</h2>
+            <p class="result-subtitle"></p>
+        </div>
+        
+        <div class="result-body">
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-value text-warning">฿80</div>
+                    <div class="info-label">ค่าจัดส่ง</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">2-4 ชม.</div>
+                    <div class="info-label">เวลาจัดส่ง</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-value">10:00-17:00</div>
+                    <div class="info-label">ช่วงเวลา</div>
+                </div>
+            </div>
+
+            <div class="zone-map">
+                <div class="zone-indicator warning">
+                    <div class="location-pin"></div>
+                </div>
+                <div class="map-label">คุณอยู่นอกเขตจัดส่งฟรี</div>
+            </div>
+
+            <div class="action-buttons">
+                <a href="/products" class="btn btn-primary btn-lg flex-1">
+                    <span>🛒</span>
+                    <span>สั่งซื้อต่อ</span>
+                </a>
+                <button type="button" class="btn btn-secondary btn-lg check-again-btn">
+                    <span>🔄</span>
+                    <span>ตรวจสอบใหม่</span>
+                </button>
+            </div>
+        </div>
+    </template>
+
+    <!-- JavaScript -->
+    <script src="delivery-check.js"></script>
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - สมาชิก Gold | Dashboard</title>
+    <link rel="stylesheet" href="member-dashboard.css">
+    <style>
+        .quick-actions .action-button {
+            text-decoration: none;
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Premium Header -->
+        <div class="premium-header">
+            <div class="header-top">
+                <button class="back-button" id="backButton">←</button>
+                <div class="header-actions">
+                    <button class="icon-button" id="notificationButton">
+                        🔔
+                        <span class="notification-badge" id="notificationBadge" style="display: none;"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Member Info Card -->
+        <div class="member-info">
+            <div class="member-header">
+                <div class="avatar" id="memberAvatar">👑</div>
+                <div class="member-details">
+                    <div class="member-name" id="memberName">คุณสมศรี ใจดี</div>
+                    <div class="member-tier" id="memberTier">
+                        <span class="tier-icon">✨</span>
+                        <span>Gold Member</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Points Display -->
+            <div class="points-display">
+                <div class="points-row">
+                    <span class="points-label">แต้มสะสมปัจจุบัน</span>
+                    <span class="points-value" id="currentPoints">15,750</span>
+                </div>
+                <div class="points-expiry" id="pointsExpiry">
+                    <span>⏰</span>
+                    <span>มี 500 แต้มจะหมดอายุ 31 ธ.ค. 67</span>
+                </div>
+            </div>
+            
+            <!-- Progress to Next Tier -->
+            <div class="tier-progress">
+                <div class="progress-header">
+                    <span class="progress-title" id="progressTitle">ระยะทางสู่ Platinum</span>
+                    <span class="progress-info" id="progressInfo">75%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill">
+                        <div class="progress-milestone"></div>
+                    </div>
+                </div>
+                <div class="progress-text" id="progressText">
+                    ซื้อออีก <strong>฿7,500</strong> เพื่ออัพเกรดเป็น Platinum
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <a href="#" class="action-button" id="rewardsButton">
+                    <div class="action-icon">🎁</div>
+                    <div class="action-label">แลกของรางวัล</div>
+                </a>
+                <a href="#" class="action-button" id="pointsHistoryButton">
+                    <div class="action-icon">📊</div>
+                    <div class="action-label">ประวัติแต้ม</div>
+                </a>
+                <a href="#" class="action-button" id="couponsButton">
+                    <div class="action-icon">🎫</div>
+                    <div class="action-label">คูปองของฉัน</div>
+                </a>
+                <a href="#" class="action-button" id="referralButton">
+                    <div class="action-icon">👥</div>
+                    <div class="action-label">ชวนเพื่อน</div>
+                </a>
+            </div>
+        </div>
+        
+        <!-- Benefits Section -->
+        <div class="benefits-section">
+            <div class="section-header">
+                <div class="section-icon">🌟</div>
+                <h2 class="section-title">สิทธิพิเศษของคุณ</h2>
+            </div>
+            
+            <div class="benefit-card exclusive">
+                <div class="benefit-icon">🚚</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">จัดส่งฟรีทุกออเดอร์</div>
+                    <div class="benefit-description">ไม่มีขั้นต่ำ + จัดส่งด่วน 2 ชม. ในกทม.</div>
+                </div>
+            </div>
+            
+            <div class="benefit-card exclusive">
+                <div class="benefit-icon">💰</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Cashback 3%</div>
+                    <div class="benefit-description">รับเงินคืนทุกการสั่งซื้อ</div>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🎂</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Birthday Special</div>
+                    <div class="benefit-description">ส่วนลด 20% + ของขวัญพิเศษ</div>
+                </div>
+                <button class="benefit-action" id="birthdayOfferButton">ดูรายละเอียด</button>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">🎁</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">ของแถมพิเศษ</div>
+                    <div class="benefit-description">ทุกการสั่งซื้อ ฿1,000 ขึ้นไป</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tier Comparison -->
+        <div class="tier-comparison">
+            <div class="section-header">
+                <div class="section-icon">📈</div>
+                <h2 class="section-title">ระดับสมาชิก</h2>
+            </div>
+            
+            <div class="tiers-grid">
+                <div class="tier-item" data-tier="bronze">
+                    <div style="font-size: 24px;">🥉</div>
+                    <div class="tier-name">Bronze</div>
+                    <div class="tier-requirement">฿0+</div>
+                </div>
+                <div class="tier-item" data-tier="silver">
+                    <div style="font-size: 24px;">🥈</div>
+                    <div class="tier-name">Silver</div>
+                    <div class="tier-requirement">฿5k+</div>
+                </div>
+                <div class="tier-item current" data-tier="gold">
+                    <div style="font-size: 24px;">🥇</div>
+                    <div class="tier-name">Gold</div>
+                    <div class="tier-requirement">฿15k+</div>
+                </div>
+                <div class="tier-item next" data-tier="platinum">
+                    <div style="font-size: 24px;">💎</div>
+                    <div class="tier-name">Platinum</div>
+                    <div class="tier-requirement">฿30k+</div>
+                </div>
+            </div>
+            
+            <button class="primary-button" id="viewAllBenefitsButton">
+                ดูสิทธิประโยชน์ทั้งหมด →
+            </button>
+        </div>
+        
+        <!-- Special Offers -->
+        <div class="special-offers">
+            <div class="section-header">
+                <div class="section-icon">🔥</div>
+                <h2 class="section-title">ข้อเสนอพิเศษสำหรับคุณ</h2>
+            </div>
+            
+            <div class="offer-banner">
+                <div class="offer-title">🎉 Gold Member Exclusive!</div>
+                <div class="offer-description">
+                    ซื้อครบ ฿1,500 รับส่วนลดทันที 15%<br>
+                    + แต้ม x2 + ของแถมพิเศษ
+                </div>
+                <button class="offer-button" id="shopNowButton">ช้อปเลย</button>
+                <div class="offer-timer">
+                    <span class="timer-icon">⏱️</span>
+                    <span id="countdownTimer">เหลือเวลา 2 วัน 14:32:15</span>
+                </div>
+            </div>
+            
+            <div class="benefit-card">
+                <div class="benefit-icon">📦</div>
+                <div class="benefit-content">
+                    <div class="benefit-title">Mystery Box สำหรับ Gold</div>
+                    <div class="benefit-description">แลกเพียง 1,000 แต้ม (มูลค่า ฿500+)</div>
+                </div>
+                <button class="benefit-action" id="mysteryBoxButton">แลกเลย</button>
+            </div>
+        </div>
+        
+        <!-- Recent Activity -->
+        <div class="activity-section">
+            <div class="section-header">
+                <div class="section-icon">📋</div>
+                <h2 class="section-title">กิจกรรมล่าสุด</h2>
+            </div>
+            
+            <div class="activity-list" id="activityList">
+                <!-- Activity items will be populated by JavaScript -->
+            </div>
+            
+            <button class="view-more-button" id="viewMoreActivity">ดูกิจกรรมเพิ่มเติม</button>
+        </div>
+        
+     <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="../../home/index.html" class="nav-item" data-nav="home">
+                <div class="nav-icon">🏠</div>
+                <span class="nav-label">หน้าแรก</span>
+            </a>
+            <a href="../../Product/listing/product-listing.html" class="nav-item" data-nav="categories">
+                <div class="nav-icon">📂</div>
+                <span class="nav-label">หมวดหมู่</span>
+            </a>
+            <a href="#" class="nav-item active" data-nav="member">
+                <div class="nav-icon">👤</div>
+                <span class="nav-label">สมาชิก</span>
+            </a>
+            <a href="../profile/user-profile.html" class="nav-item" data-nav="account">
+                <div class="nav-icon">⚙️</div>
+                <span class="nav-label">บัญชี</span>
+            </a>
+        </nav>
+    </div>
+
+        
+        <!-- Motivational Badge -->
+        <div class="motivation-badge" id="motivationBadge">
+            <span>🔥</span>
+            <span>เกือบถึง Platinum แล้ว!</span>
+        </div>
+    </div>
+
+    <!-- Template for Recent Activity Item -->
+    <template id="activityItemTemplate">
+        <div class="activity-item">
+            <div class="activity-icon" data-activity="icon"></div>
+            <div class="activity-content">
+                <div class="activity-title" data-activity="title"></div>
+                <div class="activity-points" data-activity="points"></div>
+                <div class="activity-time" data-activity="time"></div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Template for Notification -->
+    <template id="notificationTemplate">
+        <div class="notification"></div>
+    </template>
+
+    <!-- Generic Modal -->
+    <div class="modal-overlay" id="genericModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Modal Title</h3>
+                <button class="modal-close" id="modalCloseButton">×</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <p>Modal content goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="primary-button" id="modalActionButton">ตกลง</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="member-dashboard.js"></script>
+</body>
+</html>

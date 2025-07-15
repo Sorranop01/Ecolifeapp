@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco Life - จัดการที่อยู่</title>
+    <link rel="stylesheet" href="../../../styles/common.css">
+    <link rel="stylesheet" href="manage-addresses.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <button class="back-button" id="backButton">←</button>
+            <h1 class="header-title">ที่อยู่จัดส่ง</h1>
+        </header>
+
+        <main class="content">
+            <button class="add-new-btn" id="addNewAddressBtn">
+                <span>+</span> เพิ่มที่อยู่ใหม่
+            </button>
+
+            <div class="address-list" id="addressList">
+                <!-- Address cards will be populated by JS -->
+            </div>
+
+            <div class="empty-state" id="emptyState" style="display: none;">
+                <div class="empty-icon">📍</div>
+                <h2 class="empty-title">ยังไม่มีที่อยู่</h2>
+                <p class="empty-text">เพิ่มที่อยู่สำหรับจัดส่งสินค้าของคุณ</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Address Card Template -->
+    <template id="addressCardTemplate">
+        <div class="address-card" data-id="">
+            <div class="card-header">
+                <div class="card-title">
+                    <span class="user-name"></span>
+                    <span class="default-badge">ค่าเริ่มต้น</span>
+                </div>
+                <div class="card-actions">
+                    <button class="action-btn edit-btn">แก้ไข</button>
+                    <button class="action-btn delete-btn">ลบ</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <p class="phone"></p>
+                <p class="address-lines"></p>
+            </div>
+            <div class="card-footer">
+                <button class="set-default-btn">ตั้งเป็นค่าเริ่มต้น</button>
+            </div>
+        </div>
+    </template>
+
+    <!-- Add/Edit Address Modal -->
+    <div class="modal-overlay" id="addressModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">เพิ่มที่อยู่ใหม่</h3>
+                <button class="modal-close">✕</button>
+            </div>
+            <form id="addressForm">
+                <input type="hidden" id="addressId">
+                <div class="form-group">
+                    <label for="fullName">ชื่อ-นามสกุลผู้รับ</label>
+                    <input type="text" id="fullName" required placeholder="เช่น สมศรี ใจดี">
+                </div>
+                <div class="form-group">
+                    <label for="phone">เบอร์โทรศัพท์</label>
+                    <input type="tel" id="phone" required placeholder="เช่น 0812345678">
+                </div>
+                <div class="form-group">
+                    <label for="addressLine1">ที่อยู่ (บ้านเลขที่, ถนน, อาคาร)</label>
+                    <input type="text" id="addressLine1" required placeholder="เช่น 123/45 หมู่ 6 ถ.สุขุมวิท">
+                </div>
+                <div class="form-group">
+                    <label for="addressLine2">ตำบล/แขวง, อำเภอ/เขต</label>
+                    <input type="text" id="addressLine2" required placeholder="เช่น บางนา, บางนา">
+                </div>
+                <div class="form-group-row">
+                    <div class="form-group">
+                        <label for="province">จังหวัด</label>
+                        <input type="text" id="province" required placeholder="เช่น กรุงเทพมหานคร">
+                    </div>
+                    <div class="form-group">
+                        <label for="postalCode">รหัสไปรษณีย์</label>
+                        <input type="text" id="postalCode" required pattern="\d{5}" placeholder="เช่น 10260">
+                    </div>
+                </div>
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="isDefault">
+                    <label for="isDefault">ตั้งเป็นที่อยู่หลัก</label>
+                </div>
+                <button type="submit" class="save-btn">บันทึกที่อยู่</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteConfirmModal">
+        <div class="modal-content confirm-modal">
+            <h4>ยืนยันการลบ</h4>
+            <p>คุณต้องการลบที่อยู่นี้ใช่หรือไม่?</p>
+            <div class="confirm-actions">
+                <button class="cancel-btn">ยกเลิก</button>
+                <button class="confirm-delete-btn">ยืนยัน</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <div class="toast-content">
+            <span class="toast-icon" id="toastIcon">✅</span>
+            <span class="toast-message" id="toastMessage">ดำเนินการสำเร็จ</span>
+        </div>
+    </div>
+
+    <script src="manage-addresses.js"></script>
+</body>
+</html>
